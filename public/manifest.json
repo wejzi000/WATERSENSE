@@ -1,0 +1,51 @@
+{
+  "name": "WaterSense - Gestion Intelligente de l'Irrigation",
+  "short_name": "WaterSense",
+  "description": "Application IoT pour optimiser l'irrigation agricole avec IA",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#0066CC",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' fill='%230066CC' rx='45'/><path d='M96 50c-15 0-28 13-28 28v40c0 15 13 28 28 28s28-13 28-28V78c0-15-13-28-28-28zm0 10c10 0 18 8 18 18v40c0 10-8 18-18 18s-18-8-18-18V78c0-10 8-18 18-18z' fill='%23fff'/><path d='M96 130c-3 0-6 2-6 5v8c0 3 3 5 6 5s6-2 6-5v-8c0-3-3-5-6-5z' fill='%23fff'/></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' fill='%230066CC' rx='120'/><path d='M256 100c-40 0-75 35-75 75v107c0 40 35 75 75 75s75-35 75-75V175c0-40-35-75-75-75zm0 25c28 0 50 22 50 50v107c0 28-22 50-50 50s-50-22-50-50V175c0-28 22-50 50-50z' fill='%23fff'/><path d='M256 375c-8 0-15 7-15 15v20c0 8 7 15 15 15s15-7 15-15v-20c0-8-7-15-15-15z' fill='%23fff'/></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["productivity", "agriculture"],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 540 720'><rect width='540' height='720' fill='%23f0f4f8'/></svg>",
+      "sizes": "540x720",
+      "type": "image/svg+xml",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "description": "Accéder au dashboard d'irrigation",
+      "url": "/dashboard",
+      "icons": []
+    },
+    {
+      "name": "Simulateur",
+      "short_name": "Simulateur",
+      "description": "Calculer les économies d'eau",
+      "url": "/#simulator",
+      "icons": []
+    }
+  ],
+  "prefer_related_applications": false
+}

@@ -1,0 +1,4 @@
+cd "c:\Users\wejde\Desktop\PYT\next-app"
+npm install
+
+npm run dev

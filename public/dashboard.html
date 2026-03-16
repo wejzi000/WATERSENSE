@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Irrigation - WaterSense</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-size: 16px; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-blue-600 text-white p-4">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <a href="index-simple.html" class="text-2xl font-bold">💧 WaterSense</a>
+            <p class="text-lg">Bonjour Jean-Pierre</p>
+        </div>
+    </nav>
+
+    <div class="max-w-5xl mx-auto p-4">
+        <!-- Recommandation du jour -->
+        <div class="bg-green-100 border-l-4 border-green-600 p-6 rounded-lg mb-8 mt-8">
+            <p class="text-lg font-bold text-green-900">✓ Recommandation pour DEMAIN :</p>
+            <p class="text-3xl font-bold text-green-600 mt-2">Arrosez à 5h du matin pendant 45 minutes</p>
+            <p class="text-lg text-green-800 mt-2">Ça va vous donner 32mm d'eau. Parfait pour votre maïs.</p>
+            <p class="text-sm text-green-700 mt-4">Confiance : 95% (on est sûrs)</p>
+        </div>
+
+        <!-- État des champs -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">État de votre champ NORD (Maïs - 8ha)</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Humidité -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <p class="text-gray-600 text-lg font-bold">Humidité du sol</p>
+                    <p class="text-5xl font-bold text-blue-600 mt-4">45%</p>
+                    <div class="bg-blue-100 rounded-lg h-2 mt-4 overflow-hidden">
+                        <div class="bg-blue-600 h-full" style="width: 45%"></div>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2">Entre 40% et 60% = Parfait 👍</p>
+                </div>
+
+                <!-- Température -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <p class="text-gray-600 text-lg font-bold">Température</p>
+                    <p class="text-5xl font-bold text-orange-600 mt-4">22°C</p>
+                    <p class="text-lg text-orange-800 mt-4">Bonne pour la croissance</p>
+                    <p class="text-sm text-gray-600 mt-2">Pas trop chaud, pas trop froid 👍</p>
+                </div>
+
+                <!-- Dernier arrosage -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <p class="text-gray-600 text-lg font-bold">Dernier arrosage</p>
+                    <p class="text-2xl font-bold text-gray-800 mt-4">Il y a 3 jours</p>
+                    <p class="text-lg text-gray-700 mt-4">Vous aviez donné 28mm</p>
+                </div>
+
+                <!-- Pluie -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <p class="text-gray-600 text-lg font-bold">Météo pour demain</p>
+                    <p class="text-2xl font-bold text-blue-800 mt-4">Pas de pluie 🌞</p>
+                    <p class="text-lg text-gray-700 mt-4">D'où l'arrosage demain</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Historique des 7 derniers jours -->
+        <div class="bg-white p-6 rounded-lg shadow mb-8">
+            <h2 class="text-2xl font-bold mb-4">Ce qui s'est passé cette semaine</h2>
+            
+            <div class="space-y-3">
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                    <p class="font-bold">Lundi</p>
+                    <p class="text-gray-700">Humidité 55% → recommandation : NE PAS arroser</p>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                    <p class="font-bold">Mardi</p>
+                    <p class="text-gray-700">Humidité 52% → recommandation : NE PAS arroser</p>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-blue-100 rounded border-l-4 border-blue-600">
+                    <p class="font-bold">Mercredi</p>
+                    <p class="text-blue-700 font-bold">Vous avez arrosé 28mm ✓</p>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                    <p class="font-bold">Jeudi</p>
+                    <p class="text-gray-700">Humidité 48% → recommandation : NE PAS arroser</p>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                    <p class="font-bold">Vendredi</p>
+                    <p class="text-gray-700">Humidité 45% → recommandation : NE PAS arroser</p>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                    <p class="font-bold">Samedi</p>
+                    <p class="text-gray-700">Humidité 42% → situation normale</p>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-green-100 rounded border-l-4 border-green-600">
+                    <p class="font-bold">Dimanche</p>
+                    <p class="text-green-700 font-bold">DEMAIN : Arroser 45min ✓</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistiques saison -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Bilan de la saison</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <p class="text-gray-600">Eau utilisée</p>
+                    <p class="text-4xl font-bold text-blue-600 mt-2">340mm</p>
+                    <p class="text-sm text-gray-600 mt-2">vs 450mm l'année d'avant</p>
+                    <p class="text-lg font-bold text-green-600">-24% 💰</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <p class="text-gray-600">Économies</p>
+                    <p class="text-4xl font-bold text-green-600 mt-2">280€</p>
+                    <p class="text-sm text-gray-600 mt-2">sur la facture d'eau</p>
+                    <p class="text-lg font-bold text-green-600">✓ C'est bon</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <p class="text-gray-600">Rendement estimé</p>
+                    <p class="text-4xl font-bold text-green-600 mt-2">+12%</p>
+                    <p class="text-sm text-gray-600 mt-2">vs moyenne régionale</p>
+                    <p class="text-lg font-bold text-green-600">💸 Très bon</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions rapides -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Actions</h2>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <button class="bg-blue-600 text-white p-4 rounded-lg font-bold text-lg hover:bg-blue-700">
+                    📱 Activer l'arrosage automatique demain
+                </button>
+                <button class="bg-gray-600 text-white p-4 rounded-lg font-bold text-lg hover:bg-gray-700">
+                    📞 Appeler le support
+                </button>
+            </div>
+        </div>
+
+        <!-- Help -->
+        <div class="bg-yellow-50 border-l-4 border-yellow-600 p-6 rounded-lg">
+            <p class="font-bold text-yellow-900">Besoin d'aide ?</p>
+            <p class="text-lg text-yellow-800 mt-2">Vous ne comprenez pas une recommandation ? 
+            Appelez-nous au 01 23 45 67 89. On vous explique.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaterSense - Irrigation Intelligente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/recharts@2"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-600">💧 WaterSense</h1>
+            <div class="hidden md:flex gap-6">
+                <a href="#features" class="hover:text-blue-600">Fonctionnalités</a>
+                <a href="#benefits" class="hover:text-blue-600">Avantages</a>
+                <a href="#pricing" class="hover:text-blue-600">Tarifs</a>
+                <a href="dashboard.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-green-500 text-white py-20">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h1 class="text-5xl font-bold mb-6">Irrigation Intelligente pour Vos Cultures</h1>
+            <p class="text-xl mb-8 opacity-90">
+                WaterSense utilise l'IA et les capteurs IoT pour optimiser votre consommation d'eau 
+                et augmenter vos rendements agricoles.
+            </p>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <button class="bg-white text-blue-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100">
+                    Découvrir
+                </button>
+                <button class="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-blue-600">
+                    Essayer Gratuitement
+                </button>
+            </div>
+            <div class="mt-16 grid grid-cols-3 gap-8">
+                <div>
+                    <p class="text-4xl font-bold">-25%</p>
+                    <p class="text-sm opacity-90">Consommation d'eau</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-bold">+15%</p>
+                    <p class="text-sm opacity-90">Rendement moyen</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-bold">18-24M</p>
+                    <p class="text-sm opacity-90">ROI (mois)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Nos Fonctionnalités</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-6 rounded-lg shadow hover:shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">💧 Capteurs Intelligents</h3>
+                    <p class="text-gray-600">Capteurs multisensoriels (humidité, température, radiation, vent, pluie)</p>
+                </div>
+                <div class="p-6 rounded-lg shadow hover:shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">⚡ Edge Computing</h3>
+                    <p class="text-gray-600">Traitement local des données avec latence < 500ms</p>
+                </div>
+                <div class="p-6 rounded-lg shadow hover:shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">📈 IA Prescriptive</h3>
+                    <p class="text-gray-600">Recommandations précises: "Irriguer demain 4h15 pour 48min"</p>
+                </div>
+                <div class="p-6 rounded-lg shadow hover:shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">📱 Application Mobile</h3>
+                    <p class="text-gray-600">Suivi en temps réel et notifications sur votre téléphone</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Avantages Clés</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600">Réduction des coûts</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Économie d'eau</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Économie d'énergie</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Moins d'intrants chimiques</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600">Augmentation des rendements</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> +10-20% de production</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Meilleure qualité</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Réduction des risques</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600">Durabilité</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Ressource hydrique préservée</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Agriculture responsable</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Conformité réglementaire</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Tarification</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-lg shadow">
+                    <h3 class="text-2xl font-bold mb-2">Essential</h3>
+                    <p class="text-4xl font-bold text-blue-600 mb-6">2,900€</p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Capteur unique</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Recommandations basiques</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Support email</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-lg font-bold border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">Choisir</button>
+                </div>
+                <div class="p-8 rounded-lg shadow ring-2 ring-blue-600 scale-105">
+                    <h3 class="text-2xl font-bold mb-2">Standard</h3>
+                    <p class="text-4xl font-bold text-blue-600 mb-6">4,200€</p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Capteurs multiples</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> IA prescriptive complète</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Support prioritaire</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Mobile app</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-lg font-bold bg-blue-600 text-white hover:bg-opacity-90">Choisir</button>
+                </div>
+                <div class="p-8 rounded-lg shadow">
+                    <h3 class="text-2xl font-bold mb-2">Premium</h3>
+                    <p class="text-4xl font-bold text-blue-600 mb-6">6,500€</p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Capteurs illimités</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> IA + Machine Learning</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Intégration API</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Support 24/7</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-lg font-bold border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">Choisir</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+                <h3 class="font-bold mb-4">💧 WaterSense</h3>
+                <p class="text-gray-400">Irrigation intelligente pour l'agriculture durable</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Produit</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="#" class="hover:text-white">Fonctionnalités</a></li>
+                    <li><a href="#" class="hover:text-white">Tarifs</a></li>
+                    <li><a href="#" class="hover:text-white">Documentation</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Entreprise</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="#" class="hover:text-white">À propos</a></li>
+                    <li><a href="#" class="hover:text-white">Blog</a></li>
+                    <li><a href="#" class="hover:text-white">Carrières</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Légal</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="#" class="hover:text-white">Confidentialité</a></li>
+                    <li><a href="#" class="hover:text-white">Conditions</a></li>
+                    <li><a href="#" class="hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+            <p>&copy; 2026 WaterSense. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>

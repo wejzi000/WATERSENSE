@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffffff;
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ─── Layout ─── */
+.container-watersense {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─── Section headings ─── */
+.section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: #111827;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.section-subtitle {
+  text-align: center;
+  color: #6b7280;
+  max-width: 38rem;
+  margin: 0 auto 3rem;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+.section-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1F4E79;
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+
+/* ─── Card ─── */
+.card {
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 16px;
+  padding: 1.75rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+
+/* ─── Stat pill ─── */
+.stat-pill {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+}
+
+/* ─── Form elements ─── */
+.label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #374151;
+  margin-bottom: 4px;
+}
+.input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  transition: border-color 0.2s;
+  background: #fff;
+}
+.input:focus {
+  outline: none;
+  border-color: #1F4E79;
+  box-shadow: 0 0 0 3px rgba(31,78,121,0.08);
+}
+
+/* ─── Range slider ─── */
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 5px;
+  border-radius: 3px;
+  background: #e5e7eb;
+  width: 100%;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  background: #1F4E79;
+  cursor: pointer;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* ─── Divider ─── */
+.section-divider {
+  height: 1px;
+  background: #F3F4F6;
+  margin: 0;
+}
+
+/* ─── Smooth scroll offset for sticky nav ─── */
+[id] {
+  scroll-margin-top: 68px;
+}
+

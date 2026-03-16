@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaterSense - Irrigation Intelligente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/recharts@2"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-600">💧 WaterSense</h1>
+            <div class="hidden md:flex gap-6">
+                <a href="#features" class="hover:text-blue-600">Comment ça marche</a>
+                <a href="#benefits" class="hover:text-blue-600">Ce que vous gagnez</a>
+                <a href="#pricing" class="hover:text-blue-600">Tarifs</a>
+                <a href="dashboard-simple.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-green-500 text-white py-20">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-4">Arrosez Moins, Gagnez Plus 💰</h2>
+            <p class="text-2xl mb-6 text-gray-700">Économisez 25% d'eau ET gagnez 15% de récolte en plus</p>
+            
+            <div class="bg-yellow-50 border-4 border-yellow-400 p-8 rounded-lg mb-8 max-w-2xl mx-auto">
+                <p class="text-2xl font-bold text-yellow-900">💡 C'est simple :</p>
+                <p class="text-xl mt-4 text-yellow-800">WaterSense vous dit QUAND et COMBIEN arroser.</p>
+                <p class="text-xl text-yellow-800">Vous gagnez du temps ET de l'argent.</p>
+            </div>
+
+            <button class="bg-green-600 text-white simple-btn rounded-lg hover:bg-green-700 mb-4">
+                ✓ C'est pour moi !
+            </button>
+            <p class="text-gray-600">Pas de risque. Essai gratuit 30 jours.</p>
+        </div>
+    </section>
+
+    <!-- Résultats Concrets -->
+    <section class="bg-blue-50 py-16">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Voilà ce que vous gagnez</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Économie Eau -->
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center border-t-4 border-blue-600">
+                    <p class="text-5xl font-bold text-blue-600 mb-2">-25%</p>
+                    <p class="text-xl font-bold mb-2">Moins d'eau</p>
+                    <p class="text-gray-700">Vous arrosez juste ce qu'il faut, pas plus.</p>
+                    <p class="text-2xl font-bold text-green-600 mt-4">💰 200-300€/ha</p>
+                    <p class="text-sm text-gray-600">d'économie par saison</p>
+                </div>
+
+                <!-- Meilleure Récolte -->
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center border-t-4 border-green-600">
+                    <p class="text-5xl font-bold text-green-600 mb-2">+15%</p>
+                    <p class="text-xl font-bold mb-2">Plus de récolte</p>
+                    <p class="text-gray-700">Meilleur timing = plus de kilos/ha.</p>
+                    <p class="text-2xl font-bold text-green-600 mt-4">💰 1500-2000€/ha</p>
+                    <p class="text-sm text-gray-600">de revenu supplémentaire</p>
+                </div>
+
+                <!-- Moins de Stress -->
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center border-t-4 border-yellow-600">
+                    <p class="text-5xl font-bold text-yellow-600 mb-2">✓</p>
+                    <p class="text-xl font-bold mb-2">Pas de risque</p>
+                    <p class="text-gray-700">Fini les décisions. WaterSense vous guide.</p>
+                    <p class="text-2xl font-bold text-green-600 mt-4">💰 Temps gagné</p>
+                    <p class="text-sm text-gray-600">+ tranquillité d'esprit</p>
+                </div>
+            </div>
+
+            <!-- Total Économie -->
+            <div class="bg-green-600 text-white p-8 rounded-lg mt-8 text-center">
+                <p class="text-3xl font-bold">💸 TOTAL : 1700-2300€/ha de PLUS PAR AN</p>
+                <p class="text-lg mt-2">En économies ET en revenu supplémentaire</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comment ça marche ? (Simple) -->
+    <section class="py-16">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">C'est comment ça marche ?</h2>
+            
+            <div class="space-y-8">
+                <!-- Étape 1 -->
+                <div class="flex gap-6 items-start">
+                    <div class="bg-blue-600 text-white text-3xl font-bold w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0">1</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Les capteurs mesurent (c'est tout)</h3>
+                        <p class="text-lg text-gray-700">De petits boîtiers dans votre champ mesurent l'humidité du sol. C'est automatique, vous n'avez rien à faire.</p>
+                    </div>
+                </div>
+
+                <!-- Étape 2 -->
+                <div class="flex gap-6 items-start">
+                    <div class="bg-blue-600 text-white text-3xl font-bold w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0">2</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">WaterSense calcule (pas vous)</h3>
+                        <p class="text-lg text-gray-700">Le système regarde la météo, le sol, la culture. Il décide du meilleur moment d'arroser.</p>
+                    </div>
+                </div>
+
+                <!-- Étape 3 -->
+                <div class="flex gap-6 items-start">
+                    <div class="bg-blue-600 text-white text-3xl font-bold w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0">3</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Vous recevez une alerte (SMS ou app)</h3>
+                        <p class="text-lg text-gray-700">"Demain matin 5h, irriguer 45 minutes"</p>
+                        <p class="text-lg text-gray-700">Vous appuyez sur un bouton (ou vous automatisez complètement).</p>
+                    </div>
+                </div>
+
+                <!-- Étape 4 -->
+                <div class="flex gap-6 items-start">
+                    <div class="bg-green-600 text-white text-3xl font-bold w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0">✓</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Résultat : vous économisez ET vous gagnez plus</h3>
+                        <p class="text-lg text-gray-700">Pas de surcharge, pas de manque. Juste ce qu'il faut. Chaque fois.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages -->
+    <section class="bg-gray-50 py-16">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Ce que disent les agriculteurs</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Témoignage 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-blue-600">
+                    <p class="text-lg mb-4">
+                        "Avant, je n'étais jamais sûr de quand arroser. Maintenant, WaterSense me dit exactement quoi faire. 
+                        J'ai économisé 250€ d'eau et gagné 1800€ en plus cette année. C'est fou !"
+                    </p>
+                    <p class="font-bold">Jean-Pierre, agriculteur Maïs - Nouvelle-Aquitaine</p>
+                </div>
+
+                <!-- Témoignage 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-green-600">
+                    <p class="text-lg mb-4">
+                        "J'utilise WaterSense sur mon verger depuis 2 ans. Les pommes sont plus grosses, 
+                        j'utilise 30% moins d'eau. C'est le meilleur investissement que j'ai fait."
+                    </p>
+                    <p class="font-bold">Marie, arboricultrice - Provence</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prix Simple -->
+    <section class="py-16">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">Tarif Unique, Simple</h2>
+            <p class="text-center text-lg text-gray-600 mb-12">Pas de piège, pas de surprise</p>
+            
+            <div class="max-w-2xl mx-auto bg-white border-4 border-blue-600 p-8 rounded-lg shadow-lg text-center">
+                <p class="text-5xl font-bold text-blue-600 mb-4">2990€</p>
+                <p class="text-lg text-gray-700 mb-6">pour 1 hectare par an</p>
+                
+                <div class="bg-blue-50 p-6 rounded-lg mb-6 text-left">
+                    <p class="font-bold mb-4">Vous obtenez :</p>
+                    <ul class="space-y-2 text-lg">
+                        <li>✓ 4 capteurs</li>
+                        <li>✓ Application mobile simple</li>
+                        <li>✓ Alertes SMS/app</li>
+                        <li>✓ Support téléphone gratuit</li>
+                        <li>✓ Maintenance comprise</li>
+                    </ul>
+                </div>
+
+                <div class="bg-green-50 border-2 border-green-600 p-6 rounded-lg mb-8">
+                    <p class="font-bold text-lg text-green-700 mb-2">💰 Vous économisez en 2-3 mois !</p>
+                    <p class="text-gray-700">Le tarif est remboursé par vos économies + revenus supplémentaires.</p>
+                </div>
+
+                <button class="bg-green-600 text-white simple-btn rounded-lg hover:bg-green-700 w-full mb-4">
+                    Je veux l'essayer (Gratuit 30 jours)
+                </button>
+                <p class="text-gray-600">Pas de carte bancaire demandée</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Simple -->
+    <section class="bg-blue-50 py-16">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Questions que vous vous posez</h2>
+            
+            <div class="space-y-6">
+                <!-- Q1 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <p class="text-xl font-bold mb-2">Ça complique pas le travail ?</p>
+                    <p class="text-lg text-gray-700">Non. Au contraire. Au lieu de vous demander "j'arrose demain ?", 
+                    WaterSense vous dit "oui, à 5h du matin, 45 min". C'est plus simple.</p>
+                </div>
+
+                <!-- Q2 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <p class="text-xl font-bold mb-2">Et si c'est compliqué à installer ?</p>
+                    <p class="text-lg text-gray-700">Nos techniciens installent tout pour vous. Vous n'avez rien à faire. 
+                    On vous montre comment ça marche et c'est bon.</p>
+                </div>
+
+                <!-- Q3 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <p class="text-xl font-bold mb-2">Et si j'ai des problèmes ?</p>
+                    <p class="text-lg text-gray-700">Vous appelez. On répond. C'est compris dans le tarif. 
+                    On est là pour vous aider, pas pour vous vendre un truc et disparaître.</p>
+                </div>
+
+                <!-- Q4 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <p class="text-xl font-bold mb-2">Ça marche pour toutes les cultures ?</p>
+                    <p class="text-lg text-gray-700">Maïs, blé, pommes, melons, tomates... Oui. 
+                    On a réglé WaterSense pour chaque culture. Vous nous dites ce que vous cultivez, c'est fait.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appel à l'action final -->
+    <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-6">Prêt à commencer ?</h2>
+            <p class="text-2xl mb-8">30 jours gratuits. Aucun engagement. Aucune surprise.</p>
+            <button class="bg-green-500 text-white simple-btn rounded-lg hover:bg-green-600 text-xl">
+                Démarrer maintenant →
+            </button>
+            <p class="text-blue-100 mt-4">ou appelez au 01 23 45 67 89 pour parler à quelqu'un</p>
+        </div>
+    </section>
+
+    <!-- Footer Simple -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <p class="mb-2">💧 WaterSense - Pour les agriculteurs qui veulent économiser</p>
+            <p class="text-gray-400 text-sm">2026 © WaterSense. Made by farmers, for farmers.</p>
+        </div>
+    </footer>
+</body>
+</html>

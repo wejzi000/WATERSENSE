@@ -1,0 +1,13 @@
+Code_variable,Nom_questionnaire,Chi2,p_value,V_Cramer,Significativite,Interpretation
+Sexe_R,Sexe,14.76,0.002,0.154,**,Lié à l'intégration
+Logement_R,Type de logement,11.23,0.0814,0.095,,Non significatif
+EtudesParents_R,Niveau études des parents,8.88,0.1802,0.084,,Non significatif
+Tranche_Age,Tranche d'âge,11.1,0.2692,0.077,,Non significatif
+Parcours_R,Type de parcours,16.95,0.3217,0.095,,Non significatif
+Region_R,Région d'origine,3.29,0.3494,0.073,,Non significatif
+Sport_R,Pratique sportive,6.39,0.3811,0.071,,Non significatif
+Niveau_R,Niveau d'études (L1/L2/L3),5.74,0.4533,0.068,,Non significatif
+Nationalite_R,Nationalité,2.15,0.5416,0.059,,Non significatif
+SituationFam_R,Situation familiale,1.71,0.6345,0.052,,Non significatif
+Association_R,Membre association,0.89,0.8283,0.038,,Non significatif
+TempsTrajet_R,Temps de trajet,4.92,0.8409,0.051,,Non significatif
