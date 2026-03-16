@@ -1,91 +1,60 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 
-const testimonials = [
+const items = [
   {
-    name: 'Jean-Pierre M.',
-    role: 'Céréalier — 280 ha, Beauce',
-    quote:
-      "Dès la première saison, le modèle STICS-ML avait cerné mes parcelles argilo-calcaires. Résultat : 28 % d’eau en moins, 1 960 € d’économie nette directe que je réinvestis en semences. Le tableau de bord m’a évité deux passages intémpestifs au plus fort de l’été.",
+    quote: "Dès la première saison, STICS-ML a cerné mes parcelles argilo-calcaires. 28 % d’eau en moins, 1 960 € d’économie nette.",
+    name:  'Jean-Pierre M.',
+    role:  'Céréalier — 280 ha, Beauce',
   },
   {
-    name: 'Sophie L.',
-    role: 'Associée GAEC — 420 ha, Sud-Ouest',
-    quote:
-      "On hésitait entre un système de pointe à 40 000 € et WaterSense. En choisissant WaterSense, on a gardé de la trésorerie tout en obtenant les prescriptions les plus fiables que j’aie vues. La coopérative suit nos résultats et nous accompagne.",
+    quote: "On hésitait à 40 00 € pour un autre système. WaterSense nous a donné les prescriptions les plus fiables à un prix accessible.",
+    name:  'Sophie L.',
+    role:  'Associée GAEC — 420 ha, Sud-Ouest',
   },
   {
-    name: 'Marc D.',
-    role: 'Exploitant — 150 ha, Rhône',
-    quote:
-      "Les images Sentinel-2 détectent le stress hydrique avant que je le voie sur le terrain. En deux saisons, la calibration a atteint 87 % de précision. Un vrai outil de gestion, pas juste un gadget connecté.",
+    quote: "Sentinel-2 détecte le stress avant que je le vois sur le terrain. En deux saisons, 87 % de précision.",
+    name:  'Marc D.',
+    role:  'Exploitant — 150 ha, Rhône',
   },
 ]
 
 export function Testimonials() {
   const [idx, setIdx] = useState(0)
-  const [paused, setPaused] = useState(false)
 
   useEffect(() => {
-    if (paused) return
-    const t = setInterval(() => setIdx(i => (i + 1) % testimonials.length), 6000)
+    const t = setInterval(() => setIdx(i => (i + 1) % items.length), 5000)
     return () => clearInterval(t)
-  }, [paused])
-
-  const prev = () => {
-    setPaused(true)
-    setIdx(i => (i - 1 + testimonials.length) % testimonials.length)
-  }
-  const next = () => {
-    setPaused(true)
-    setIdx(i => (i + 1) % testimonials.length)
-  }
-
-  const t = testimonials[idx]
+  }, [])
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container-watersense max-w-3xl text-center">
-        <span className="section-tag">Témoignages</span>
-        <h2 className="section-title mt-3 mb-12">Ce que disent les exploitants</h2>
+    <section className="py-24 bg-[#F8FAFC]">
+      <div className="wrap max-w-2xl text-center">
+        <span className="eyebrow">Témoignages</span>
 
-        <div className="relative bg-white rounded-2xl border border-gray-100 shadow-sm p-8 md:p-10">
-          <blockquote>
-            <p className="text-base md:text-lg text-gray-700 leading-relaxed italic mb-6">
-              &ldquo;{t.quote}&rdquo;
-            </p>
-            <footer>
-              <p className="font-bold text-gray-900">{t.name}</p>
-              <p className="text-sm text-gray-400">{t.role}</p>
-            </footer>
-          </blockquote>
+        <div className="mt-10 relative min-h-[140px]">
+          {items.map((it, i) => (
+            <div
+              key={i}
+              className="absolute inset-0 flex flex-col items-center justify-center transition-all duration-500"
+              style={{ opacity: i === idx ? 1 : 0, transform: i === idx ? 'none' : 'translateY(10px)', pointerEvents: i === idx ? 'auto' : 'none' }}
+            >
+              <blockquote className="text-lg md:text-xl font-medium text-gray-800 leading-relaxed mb-6">
+                &ldquo;{it.quote}&rdquo;
+              </blockquote>
+              <p className="font-bold text-gray-900 text-sm">{it.name}</p>
+              <p className="text-xs text-gray-400">{it.role}</p>
+            </div>
+          ))}
+        </div>
 
-          <div className="flex items-center justify-center gap-4 mt-8">
-            <button
-              onClick={prev}
-              className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center hover:border-primary hover:text-primary transition"
-              aria-label="Témoignage précédent"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => { setPaused(true); setIdx(i) }}
-                className={`h-2 rounded-full transition-all ${i === idx ? 'bg-primary w-5' : 'bg-gray-200 w-2'}`}
-                aria-label={`Témoignage ${i + 1}`}
-              />
-            ))}
-            <button
-              onClick={next}
-              className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center hover:border-primary hover:text-primary transition"
-              aria-label="Témoignage suivant"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
+        <div className="flex justify-center gap-2 mt-12">
+          {items.map((_, i) => (
+            <button key={i} onClick={() => setIdx(i)}
+              className={`h-1.5 rounded-full transition-all duration-300 ${i === idx ? 'bg-primary w-6' : 'bg-gray-200 w-1.5'}`}
+            />
+          ))}
         </div>
       </div>
     </section>

@@ -2,154 +2,106 @@
 
 import { useState, useMemo } from 'react'
 
-// V20 reference constants (verified against rapport V20)
-const WATER_M3_PER_HA = 600        // m³/ha/year  (vérifié : 120 000 m³ / 200 ha)
-const WATER_COST_EUR_M3 = 0.12     // €/m³
-const ENERGY_EUR_PER_HA = 24       // €/ha/year  (vérifié : 4 800 € / 200 ha)
-const SAVING_RATE = 0.30           // 30 % de réduction (fourchette réelle 20–35 %)
+const W_M3   = 600     // m³/ha/an
+const W_COST = 0.12    // €/m³
+const E_HA   = 24      // €/ha/an énergie
+const SAVE   = 0.30    // 30%
 
-function getPlanTier(ha: number): { name: string; rate: number } {
-  if (ha < 100) return { name: 'Essentiel', rate: 12.5 }
-  if (ha <= 300) return { name: 'Standard', rate: 19 }
-  return { name: 'Premium', rate: 31.5 }
+function tier(ha: number) {
+  if (ha <  100) return { name: 'Essentiel', rate: 12.5 }
+  if (ha <= 300) return { name: 'Standard',  rate: 19   }
+  return               { name: 'Premium',    rate: 31.5 }
 }
 
+const fmt = (n: number) => n.toLocaleString('fr-FR')
+
 export function Simulator() {
-  const [hectares, setHectares] = useState(200)
+  const [ha, setHa] = useState(200)
 
-  const res = useMemo(() => {
-    const tier = getPlanTier(hectares)
+  const r = useMemo(() => {
+    const t     = tier(ha)
+    const gross = Math.round(ha * (W_M3 * SAVE * W_COST + E_HA * SAVE))
+    const sub   = Math.round(ha * t.rate)
+    const net   = gross - sub
+    const mat   = Math.max(1500, ha * 10)
+    const pay   = net > 0 ? Math.round(mat / net * 12 * 10) / 10 : null
+    const water = Math.round(ha * W_M3 * SAVE)
+    return { t, gross, sub, net, mat, pay, water }
+  }, [ha])
 
-    // Gross savings: water + energy
-    const waterSaved = Math.round(hectares * WATER_M3_PER_HA * SAVING_RATE)
-    const waterEur   = hectares * WATER_M3_PER_HA * SAVING_RATE * WATER_COST_EUR_M3
-    const energyEur  = hectares * ENERGY_EUR_PER_HA * SAVING_RATE
-    const gross      = Math.round(waterEur + energyEur)
-
-    // Subscription
-    const sub = Math.round(hectares * tier.rate)
-
-    // Net direct economy
-    const net = gross - sub
-
-    // Indicative material cost (one-time hardware kit)
-    const material = Math.max(1500, Math.round(hectares * 10))
-
-    // Payback in months
-    const payback = net > 0 ? Math.round((material / net) * 12 * 10) / 10 : null
-
-    return { tier, waterSaved, gross, sub, net, material, payback }
-  }, [hectares])
-
-  const fmt = (n: number) => n.toLocaleString('fr-FR')
+  const pct = ((ha - 50) / 450) * 100
 
   return (
-    <section id="simulateur" className="py-20 bg-white">
-      <div className="container-watersense max-w-3xl">
+    <section id="simulateur" className="py-24 bg-[#F8FAFC]">
+      <div className="wrap max-w-2xl">
         <div className="text-center mb-12">
-          <span className="section-tag">Simulateur</span>
-          <h2 className="section-title mt-3">Estimez votre économie annuelle</h2>
-          <p className="section-subtitle">
-            Calcul basé sur les valeurs de référence V20 : 600 m³/ha/an, 0,12 €/m³,
-            réduction de 30 % (fourchette réelle 20–35 %).
-          </p>
+          <span className="eyebrow">Simulateur</span>
+          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mt-3 tracking-tight">
+            Votre économie en 10 secondes
+          </h2>
         </div>
 
-        <div className="bg-gray-50 rounded-2xl border border-gray-100 p-8">
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
           {/* Slider */}
           <div className="mb-8">
-            <div className="flex items-baseline justify-between mb-3">
-              <label className="text-sm font-semibold text-gray-700">Surface exploitée</label>
-              <span className="text-2xl font-extrabold text-primary">{hectares} ha</span>
+            <div className="flex justify-between items-baseline mb-4">
+              <span className="text-sm font-semibold text-gray-600">Surface irriguée</span>
+              <span className="text-4xl font-black text-primary tabular-nums">{ha}<span className="text-xl font-bold text-gray-400 ml-1">ha</span></span>
             </div>
-            <input
-              type="range"
-              min={50}
-              max={500}
-              step={10}
-              value={hectares}
-              onChange={e => setHectares(Number(e.target.value))}
-              className="w-full h-2 rounded-full appearance-none bg-gray-200 accent-primary cursor-pointer"
-            />
-            <div className="flex justify-between text-xs text-gray-400 mt-1.5">
-              <span>50 ha</span>
-              <span>500 ha</span>
+            <div className="relative">
+              <div className="h-2 rounded-full bg-gray-100 overflow-hidden">
+                <div className="h-full bg-primary rounded-full transition-all duration-150" style={{ width: pct + '%' }} />
+              </div>
+              <input type="range" min={50} max={500} step={10} value={ha}
+                onChange={e => setHa(+e.target.value)}
+                className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+              />
+              <div className="absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-primary border-2 border-white shadow-md pointer-events-none transition-all duration-150"
+                style={{ left: `calc(${pct}% - 10px)` }} />
+            </div>
+            <div className="flex justify-between text-xs text-gray-300 mt-2">
+              <span>50 ha</span><span>500 ha</span>
             </div>
           </div>
 
-          {/* Plan badge */}
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <span className="text-xs text-gray-500">Plan recommandé :</span>
-            <span className="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
-              {res.tier.name} — {res.tier.rate} €/ha/an
+          {/* Plan */}
+          <div className="flex justify-center mb-6">
+            <span className="bg-primary/10 text-primary text-xs font-bold px-4 py-1.5 rounded-full">
+              Plan {r.t.name} — {r.t.rate} €/ha/an
             </span>
           </div>
 
-          {/* Results grid */}
-          <div className="grid sm:grid-cols-2 gap-4 mb-6">
-            <div className="bg-white rounded-xl p-4 border border-gray-100">
+          {/* Results */}
+          <div className="grid grid-cols-2 gap-3 mb-4">
+            <div className="rounded-xl bg-gray-50 p-4">
               <p className="text-xs text-gray-400 mb-1">Eau économisée</p>
-              <p className="text-xl font-extrabold text-gray-900">{fmt(res.waterSaved)} m³</p>
-              <p className="text-xs text-gray-400">≈ 30 % consommation</p>
+              <p className="text-xl font-black text-gray-800">{fmt(r.water)}<span className="text-sm font-semibold text-gray-400 ml-1">m³</span></p>
             </div>
-            <div className="bg-white rounded-xl p-4 border border-gray-100">
+            <div className="rounded-xl bg-gray-50 p-4">
               <p className="text-xs text-gray-400 mb-1">Économies brutes</p>
-              <p className="text-xl font-extrabold text-gray-900">{fmt(res.gross)} €</p>
-              <p className="text-xs text-gray-400">eau + énergie pompage</p>
+              <p className="text-xl font-black text-gray-800">{fmt(r.gross)}<span className="text-sm font-semibold text-gray-400 ml-1">€</span></p>
             </div>
-            <div className="bg-white rounded-xl p-4 border border-gray-100">
-              <p className="text-xs text-gray-400 mb-1">Abonnement annuel</p>
-              <p className="text-xl font-extrabold text-primary">−{fmt(res.sub)} €</p>
-              <p className="text-xs text-gray-400">{res.tier.rate} €/ha × {hectares} ha</p>
+            <div className="rounded-xl bg-gray-50 p-4">
+              <p className="text-xs text-gray-400 mb-1">Abonnement</p>
+              <p className="text-xl font-black text-primary">−{fmt(r.sub)}<span className="text-sm font-semibold text-primary/50 ml-1">€</span></p>
             </div>
-            <div
-              className={`rounded-xl p-4 border ${
-                res.net >= 0
-                  ? 'bg-emerald-50 border-emerald-100'
-                  : 'bg-amber-50 border-amber-100'
-              }`}
-            >
-              <p className="text-xs text-gray-400 mb-1">Économie nette directe</p>
-              <p
-                className={`text-xl font-extrabold ${
-                  res.net >= 0 ? 'text-secondary' : 'text-amber-600'
-                }`}
-              >
-                {res.net >= 0 ? '+' : ''}{fmt(res.net)} €/an
+            <div className={`rounded-xl p-4 ${r.net >= 0 ? 'bg-green-50' : 'bg-amber-50'}`}>
+              <p className="text-xs text-gray-400 mb-1">Économie nette</p>
+              <p className={`text-xl font-black ${r.net >= 0 ? 'text-green-700' : 'text-amber-600'}`}>
+                {r.net >= 0 ? '+' : ''}{fmt(r.net)}<span className="text-sm font-semibold ml-1">€</span>
               </p>
-              <p className="text-xs text-gray-400">hors gains indirects</p>
             </div>
           </div>
 
-          {/* Payback note */}
-          {res.payback !== null && res.net > 0 && (
-            <div className="bg-primary/5 border border-primary/10 rounded-xl p-4 text-center">
-              <p className="text-sm text-gray-700">
-                Investissement matériel estimé <strong>~{fmt(res.material)} €</strong>
-                {' '}· Retour sur investissement en{' '}
-                <strong className="text-primary">~{res.payback} mois</strong>
+          {r.pay !== null && r.net > 0 && (
+            <div className="rounded-xl bg-primary/5 border border-primary/10 p-4 text-center">
+              <p className="text-sm font-semibold text-gray-800">
+                Matériel ~{fmt(r.mat)} € · Retour en <span className="text-primary font-black">{r.pay} mois</span>
               </p>
-              <p className="text-xs text-gray-400 mt-1">
-                ROI matériel 110–210 % en incluant les aides France 2030 (30–50 % du matériel)
-              </p>
-            </div>
-          )}
-
-          {res.net < 0 && (
-            <div className="bg-amber-50 border border-amber-100 rounded-xl p-4 text-center">
-              <p className="text-xs text-amber-700">
-                Pour les exploitations de moins de 100 ha, les gains indirects (PAC, qualité des
-                récoltes, moins d’intrants) représentent 10 000–15 000 €/an et compensent
-                largement le solde direct.
-              </p>
+              <p className="text-xs text-gray-400 mt-1">ROI 110–210 % avec les aides France 2030</p>
             </div>
           )}
         </div>
-
-        <p className="text-center text-xs text-gray-400 mt-4">
-          Simulation indicative · Référence : INRAE, plan V20 WaterSense ·
-          Les gains indirects (conformité PAC, rendements) ne sont pas inclus
-        </p>
       </div>
     </section>
   )
