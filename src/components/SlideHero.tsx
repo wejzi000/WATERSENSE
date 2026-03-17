@@ -43,18 +43,18 @@ export function SlideHero() {
         </svg>
 
         {/* Floating dots */}
-        {[...Array(6)].map((_, i) => (
+          {[...Array(4)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute rounded-full bg-electric/20"
+            className="absolute rounded-full bg-sky-400/10"
             style={{
-              width: 6 + i * 4,
-              height: 6 + i * 4,
-              left: `${15 + i * 14}%`,
-              top: `${20 + (i % 3) * 25}%`,
+              width: 4 + i * 3,
+              height: 4 + i * 3,
+              left: `${20 + i * 18}%`,
+              top: `${25 + (i % 3) * 20}%`,
             }}
-            animate={{ y: [0, -20, 0], opacity: [0.3, 0.7, 0.3] }}
-            transition={{ duration: 3 + i, repeat: Infinity, ease: 'easeInOut' }}
+            animate={{ y: [0, -15, 0], opacity: [0.2, 0.5, 0.2] }}
+            transition={{ duration: 4 + i, repeat: Infinity, ease: 'easeInOut' }}
           />
         ))}
       </div>
@@ -70,7 +70,7 @@ export function SlideHero() {
         >
           <span className="w-2 h-2 rounded-full bg-emerald animate-pulse" />
           <span className="text-sm font-medium text-white/80">
-            Irrigation prescriptive · Powered by INRAE & IA
+            Irrigation prescriptive
           </span>
         </motion.div>
 
@@ -82,11 +82,10 @@ export function SlideHero() {
           animate="visible"
           className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
         >
-          L&apos;irrigation prescriptive qui transforme le{' '}
+          Chaque goutte compte.{' '}
           <span className="bg-gradient-to-r from-electric to-emerald bg-clip-text text-transparent">
-            stress hydrique
-          </span>{' '}
-          en avantage compétitif
+            Chaque goutte décide.
+          </span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -95,10 +94,11 @@ export function SlideHero() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto mb-10"
+          className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-10"
         >
-          Réduisez votre consommation d&apos;eau de 25% à 35% tout en sécurisant
-          vos rendements. <span className="text-emerald font-semibold">-20% garanti par contrat.</span>
+          L&apos;IA qui vous dit quand, combien et où irriguer.
+          <br />
+          <span className="text-emerald font-semibold">-20% d&apos;eau garanti par contrat.</span>
         </motion.p>
 
         {/* CTA buttons */}
@@ -123,19 +123,18 @@ export function SlideHero() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-3 gap-4 max-w-2xl mx-auto"
+          className="grid grid-cols-3 gap-4 max-w-xl mx-auto"
         >
           {[
-            { value: '-20%', label: 'Eau garantie', sub: 'par contrat' },
-            { value: '70-90%', label: 'Prescriptivité', sub: 'dès la 1ère saison' },
-            { value: '110-210%', label: 'ROI matériel', sub: 'sur 3 ans' },
+            { value: '-20%', label: 'Eau garantie' },
+            { value: '70-90%', label: 'Précision IA' },
+            { value: '110-210%', label: 'ROI' },
           ].map((stat) => (
-            <div key={stat.label} className="glass p-4 text-center">
-              <p className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-electric to-emerald bg-clip-text text-transparent">
+            <div key={stat.label} className="text-center py-4">
+              <p className="text-2xl md:text-3xl font-bold text-sky-400">
                 {stat.value}
               </p>
-              <p className="text-sm font-medium text-white/80 mt-1">{stat.label}</p>
-              <p className="text-xs text-white/50">{stat.sub}</p>
+              <p className="text-xs text-white/40 mt-1">{stat.label}</p>
             </div>
           ))}
         </motion.div>

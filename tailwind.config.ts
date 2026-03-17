@@ -9,13 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'deep':      '#001F3F',
-        'electric':  '#0074D9',
+        'deep':      '#0A1628',
+        'electric':  '#38BDF8',
         'emerald':   '#10B981',
         'emerald-d': '#059669',
-        'navy':      '#0F2D4A',
+        'navy':      '#0F2844',
         'sky':       '#38BDF8',
-        'light':     '#F8FAFC',
+        'light':     '#F1F5F9',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

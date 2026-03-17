@@ -54,7 +54,7 @@ export function Navbar() {
         {/* CTA */}
         <a
           href="#roi"
-          className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald to-emerald-d text-white text-sm font-semibold hover:opacity-90 transition-opacity"
+          className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 text-white text-sm font-medium hover:bg-emerald-600 transition"
         >
           Essai gratuit
         </a>
