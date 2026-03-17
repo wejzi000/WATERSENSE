@@ -161,95 +161,105 @@ export function SlideApp() {
             </div>
           </motion.div>
 
-          {/* Right: Mockups — Browser (web) + Phone (mobile) side by side */}
+          {/* Right: Mockups — Browser (web) + Phone (mobile) side by side, aligned top */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex items-end justify-center gap-4 md:gap-6"
+            className="flex flex-col items-center"
           >
-            {/* Browser mockup (website) */}
-            <div className="hidden md:block">
-              <div className="flex items-center gap-2 mb-2 justify-center">
-                <svg className="w-5 h-5 text-electric" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            {/* Top labels: PC / Mobile */}
+            <div className="flex items-center justify-center gap-12 md:gap-20 mb-4 w-full">
+              <div className="hidden md:flex items-center gap-2">
+                <svg className="w-6 h-6 text-electric" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <rect x="2" y="3" width="20" height="14" rx="2" />
                   <path d="M8 21h8m-4-4v4" />
                 </svg>
-                <span className="text-xs text-white/50 font-medium">Web</span>
+                <span className="text-sm text-white/70 font-semibold">Version Web</span>
               </div>
-              <div className="browser-frame">
-                <div className="browser-bar">
-                  <div className="browser-dot bg-red-400" />
-                  <div className="browser-dot bg-yellow-400" />
-                  <div className="browser-dot bg-green-400" />
-                  <div className="flex-1 bg-white/5 rounded-md mx-3 h-5 flex items-center px-2">
-                    <span className="text-[9px] text-white/30">app.watersense.fr</span>
-                  </div>
-                </div>
-                <motion.div
-                  key={`browser-${activeScreen}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="p-2"
-                  style={{ minHeight: 380 }}
-                >
-                  {/* Header bar */}
-                  <div className="flex items-center justify-between px-3 py-2 border-b border-white/5">
-                    <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-full bg-gradient-to-r from-electric to-emerald" />
-                      <span className="text-[10px] font-bold text-white">WaterSense</span>
-                    </div>
-                    <div className="flex gap-3">
-                      {['Dashboard', 'Parcelles', 'Alertes'].map((t) => (
-                        <span key={t} className="text-[9px] text-white/30">{t}</span>
-                      ))}
-                    </div>
-                  </div>
-                  {screens[activeScreen].content}
-                </motion.div>
-              </div>
-            </div>
-
-            {/* Phone mockup (mobile) */}
-            <div>
-              <div className="flex items-center gap-2 mb-2 justify-center">
-                <svg className="w-5 h-5 text-emerald" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex items-center gap-2">
+                <svg className="w-6 h-6 text-emerald" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <rect x="5" y="2" width="14" height="20" rx="2" />
                   <path d="M12 18h.01" />
                 </svg>
-                <span className="text-xs text-white/50 font-medium">Mobile</span>
+                <span className="text-sm text-white/70 font-semibold">App Mobile</span>
               </div>
-              <div className="phone-frame">
-                <div className="phone-notch" />
-                <motion.div
-                  key={`phone-${activeScreen}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="pt-8"
-                >
-                  {/* Status bar */}
-                  <div className="flex justify-between items-center px-4 pb-2">
-                    <span className="text-[9px] text-white/40">9:41</span>
-                    <div className="flex gap-1">
-                      <div className="w-3 h-1.5 rounded-sm bg-white/30" />
-                      <div className="w-3 h-1.5 rounded-sm bg-white/30" />
-                      <div className="w-4 h-2 rounded-sm bg-emerald-400" />
+            </div>
+
+            {/* Mockups aligned from top */}
+            <div className="flex items-start justify-center gap-5 md:gap-8">
+              {/* Browser mockup (website) */}
+              <div className="hidden md:block">
+                <div className="browser-frame">
+                  <div className="browser-bar">
+                    <div className="browser-dot bg-red-400" />
+                    <div className="browser-dot bg-yellow-400" />
+                    <div className="browser-dot bg-green-400" />
+                    <div className="flex-1 bg-white/5 rounded-md mx-3 h-5 flex items-center px-2">
+                      <span className="text-[9px] text-white/30">app.watersense.fr</span>
                     </div>
                   </div>
-                  {/* App header */}
-                  <div className="flex items-center gap-2 px-4 py-2 border-b border-white/5">
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-electric to-emerald" />
-                    <span className="text-xs font-bold text-white">WaterSense</span>
+                  <div className="overflow-hidden" style={{ height: 400 }}>
+                    <motion.div
+                      key={`browser-${activeScreen}`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                      className="p-2"
+                    >
+                      {/* Header bar */}
+                      <div className="flex items-center justify-between px-3 py-2 border-b border-white/5">
+                        <div className="flex items-center gap-2">
+                          <div className="w-5 h-5 rounded-full bg-gradient-to-r from-electric to-emerald" />
+                          <span className="text-[10px] font-bold text-white">WaterSense</span>
+                        </div>
+                        <div className="flex gap-3">
+                          {['Dashboard', 'Parcelles', 'Alertes'].map((t) => (
+                            <span key={t} className="text-[9px] text-white/30">{t}</span>
+                          ))}
+                        </div>
+                      </div>
+                      {screens[activeScreen].content}
+                    </motion.div>
                   </div>
-                  {screens[activeScreen].content}
-                </motion.div>
-                {/* Bottom nav */}
-                <div className="absolute bottom-0 inset-x-0 flex justify-around py-3 border-t border-white/5 bg-[#0F172A]">
-                  {['🏠', '🗺️', '📊', '⚙️'].map((icon, i) => (
-                    <span key={i} className={`text-base ${i === 0 ? '' : 'opacity-40'}`}>{icon}</span>
-                  ))}
+                </div>
+              </div>
+
+              {/* Phone mockup (mobile) */}
+              <div>
+                <div className="phone-frame">
+                  <div className="phone-notch" />
+                  <div className="overflow-hidden" style={{ height: 490 }}>
+                    <motion.div
+                      key={`phone-${activeScreen}`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                      className="pt-8"
+                    >
+                      {/* Status bar */}
+                      <div className="flex justify-between items-center px-4 pb-2">
+                        <span className="text-[9px] text-white/40">9:41</span>
+                        <div className="flex gap-1">
+                          <div className="w-3 h-1.5 rounded-sm bg-white/30" />
+                          <div className="w-3 h-1.5 rounded-sm bg-white/30" />
+                          <div className="w-4 h-2 rounded-sm bg-emerald-400" />
+                        </div>
+                      </div>
+                      {/* App header */}
+                      <div className="flex items-center gap-2 px-4 py-2 border-b border-white/5">
+                        <div className="w-6 h-6 rounded-full bg-gradient-to-r from-electric to-emerald" />
+                        <span className="text-xs font-bold text-white">WaterSense</span>
+                      </div>
+                      {screens[activeScreen].content}
+                    </motion.div>
+                  </div>
+                  {/* Bottom nav */}
+                  <div className="absolute bottom-0 inset-x-0 flex justify-around py-3 border-t border-white/5 bg-[#0F172A]">
+                    {['🏠', '🗺️', '📊', '⚙️'].map((icon, i) => (
+                      <span key={i} className={`text-base ${i === 0 ? '' : 'opacity-40'}`}>{icon}</span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
