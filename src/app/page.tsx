@@ -1,27 +1,21 @@
 'use client'
 
-import { Navigation } from '@/components/Navigation'
-import { Hero } from '@/components/Hero'
-import { StatsStrip } from '@/components/StatsStrip'
-import { FeatureSlider } from '@/components/FeatureSlider'
-import { Testimonials } from '@/components/Testimonials'
-import { Pricing } from '@/components/Pricing'
-import { Simulator } from '@/components/Simulator'
-import { Contact } from '@/components/Contact'
-import { Footer } from '@/components/Footer'
+import { Navbar } from '@/components/Navbar'
+import { SlideHero } from '@/components/SlideHero'
+import { SlideUrgence } from '@/components/SlideUrgence'
+import { SlideTechno } from '@/components/SlideTechno'
+import { SlideApp } from '@/components/SlideApp'
+import { SlideROI } from '@/components/SlideROI'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Navigation />
-      <Hero />
-      <StatsStrip />
-      <FeatureSlider />
-      <Simulator />
-      <Pricing />
-      <Testimonials />
-      <Contact />
-      <Footer />
+    <main>
+      <Navbar />
+      <SlideHero />
+      <SlideUrgence />
+      <SlideTechno />
+      <SlideApp />
+      <SlideROI />
     </main>
   )
 }
