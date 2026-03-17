@@ -31,7 +31,7 @@ const fieldData = {
     stats: {
       humidity: { label: "Humidité du sol", value: "45%", trend: "↓ 2%", color: "blue" as const },
       temperature: { label: "Température", value: "22°C", trend: "↑ 1°C", color: "orange" as const },
-      water: { label: "Eau apportée (jour)", value: "12mm", trend: "✓ Optimal", color: "green" as const },
+      water: { label: "Eau apportée (jour)", value: "12mm", trend: "Optimal", color: "green" as const },
       yield: { label: "Rendement estimé", value: "+14%", trend: "vs. moyenne", color: "purple" as const }
     },
     sensors: [
@@ -41,8 +41,8 @@ const fieldData = {
       { sensor: "Vent", value: "12 km/h", status: "normal" as const }
     ],
     alerts: [
-      { type: "info" as const, title: "Recommandation du jour", message: "💧 Irriguer demain matin 4h15 pour 48 minutes (besoin: 32mm)" },
-      { type: "warning" as const, title: "Pluie prévue", message: "🌧️ 15mm de pluie prévus demain. Irrigation peut être réduite." }
+      { type: "info" as const, title: "Recommandation du jour", message: "Irriguer demain matin 4h15 pour 48 minutes (besoin: 32mm)" },
+      { type: "warning" as const, title: "Pluie prévue", message: "15mm de pluie prévus demain. Irrigation peut être réduite." }
     ],
     recommendations: [
       { time: "Demain 4h15", action: "Démarrer irrigation", duration: "48 minutes", volume: "32mm", confidence: "95%" },
@@ -62,7 +62,7 @@ const fieldData = {
     stats: {
       humidity: { label: "Humidité du sol", value: "62%", trend: "↑ 3%", color: "blue" as const },
       temperature: { label: "Température", value: "19°C", trend: "→ 0°C", color: "orange" as const },
-      water: { label: "Eau apportée (jour)", value: "8mm", trend: "✓ Optimal", color: "green" as const },
+      water: { label: "Eau apportée (jour)", value: "8mm", trend: "Optimal", color: "green" as const },
       yield: { label: "Rendement estimé", value: "+18%", trend: "vs. moyenne", color: "purple" as const }
     },
     sensors: [
@@ -72,8 +72,8 @@ const fieldData = {
       { sensor: "Vent", value: "8 km/h", status: "low" as const }
     ],
     alerts: [
-      { type: "success" as const, title: "Irrigation parfaite", message: "✅ Niveau optimal atteint. Pas d'irrigation nécessaire aujourd'hui." },
-      { type: "info" as const, title: "Météo favorable", message: "☀️ Conditions idéales pour la croissance des fruits." }
+      { type: "success" as const, title: "Irrigation parfaite", message: "Niveau optimal atteint. Pas d'irrigation nécessaire aujourd'hui." },
+      { type: "info" as const, title: "Météo favorable", message: "Conditions idéales pour la croissance des fruits." }
     ],
     recommendations: [
       { time: "Aujourd'hui 18h00", action: "Pause irrigation", duration: "—", volume: "0mm", confidence: "98%" },
@@ -93,7 +93,7 @@ const fieldData = {
     stats: {
       humidity: { label: "Humidité du sol", value: "38%", trend: "↓ 5%", color: "blue" as const },
       temperature: { label: "Température", value: "24°C", trend: "↑ 2°C", color: "orange" as const },
-      water: { label: "Eau apportée (jour)", value: "18mm", trend: "⚠ Élevé", color: "green" as const },
+      water: { label: "Eau apportée (jour)", value: "18mm", trend: "Elevé", color: "green" as const },
       yield: { label: "Rendement estimé", value: "+11%", trend: "vs. moyenne", color: "purple" as const }
     },
     sensors: [
@@ -103,8 +103,8 @@ const fieldData = {
       { sensor: "Vent", value: "15 km/h", status: "normal" as const }
     ],
     alerts: [
-      { type: "warning" as const, title: "Stress hydrique détecté", message: "⚠️ Humidité critique. Irrigation urgente recommandée dans les 6h." },
-      { type: "error" as const, title: "Température élevée", message: "🌡️ Chaleur excessive. Irriguer tôt le matin pour limiter l'évaporation." }
+      { type: "warning" as const, title: "Stress hydrique détecté", message: "Humidité critique. Irrigation urgente recommandée dans les 6h." },
+      { type: "error" as const, title: "Température élevée", message: "Chaleur excessive. Irriguer tôt le matin pour limiter l'évaporation." }
     ],
     recommendations: [
       { time: "Aujourd'hui 16h30", action: "Irrigation urgente", duration: "65 minutes", volume: "42mm", confidence: "99%" },

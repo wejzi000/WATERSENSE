@@ -167,9 +167,7 @@ export function SlideROI() {
           className="text-center mt-10"
         >
           <a
-            href="https://calendly.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#contact"
             className="btn-cta inline-block text-lg"
           >
             Demander mon essai gratuit de 30 jours →

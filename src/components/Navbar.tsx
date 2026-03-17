@@ -10,6 +10,7 @@ const navLinks = [
   { label: 'Application', href: '#app' },
   { label: 'ROI', href: '#roi' },
   { label: 'Contact', href: '#contact' },
+  { label: 'Dashboard', href: '/dashboard' },
 ]
 
 export function Navbar() {

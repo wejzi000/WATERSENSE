@@ -8,7 +8,7 @@ const techCards = [
     step: '01',
     title: 'Des capteurs dans vos parcelles',
     subtitle: 'Mesure en continu · Sans fil',
-    emoji: '📡',
+    icon: 'sensor',
     description:
       'On installe 3 petites sondes dans le sol (à 30, 60 et 90 cm) + une mini station météo. Elles mesurent l\'humidité toutes les 15 minutes et envoient les données automatiquement.',
     specs: ['Kit complet : 1 400 €', 'Posé en 1/2 journée : 600 €', 'Dure 5 ans sans entretien'],
@@ -18,7 +18,7 @@ const techCards = [
     step: '02',
     title: 'Une IA qui apprend votre terrain',
     subtitle: 'Basée sur 40 ans de recherche agronomique',
-    emoji: '🧠',
+    icon: 'brain',
     description:
       'Notre algorithme combine 40 ans de données scientifiques avec ce que vos capteurs mesurent chaque jour. Plus il tourne, plus il connaît vos parcelles et plus ses recommandations sont précises.',
     specs: ['Fiabilité : 70-90%', 'Précis dès la 1ère saison', 'S\'adapte à chaque culture'],
@@ -28,7 +28,7 @@ const techCards = [
     step: '03',
     title: 'Le satellite confirme tout',
     subtitle: 'Vue aérienne européenne gratuite',
-    emoji: '🛰️',
+    icon: 'satellite',
     description:
       'Toutes les semaines, un satellite européen photographie vos parcelles depuis l\'espace. Ça permet de vérifier la santé de vos cultures et de garder le système fiable même si un capteur a un souci.',
     specs: ['Photo tous les 5 jours', 'Précision : 10 m', 'Sécurité en cas de panne'],
@@ -90,7 +90,7 @@ export function SlideTechno() {
                   <p className="font-semibold text-sm">{card.title}</p>
                   <p className="text-white/40 text-xs">{card.subtitle}</p>
                 </div>
-                <span className="text-xl ml-auto">{card.emoji}</span>
+                <span className="w-8 h-8 ml-auto rounded-full bg-gradient-to-r from-electric to-emerald opacity-60" />
               </motion.button>
             ))}
           </div>
@@ -129,9 +129,11 @@ export function SlideTechno() {
               ))}
             </div>
 
-            {/* Visual: emoji large */}
+            {/* Visual: icon */}
             <div className="mt-6 flex justify-center">
-              <span className="text-7xl">{techCards[active].emoji}</span>
+              <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${techCards[active].color} flex items-center justify-center`}>
+                <span className="text-3xl font-black text-white">{techCards[active].step}</span>
+              </div>
             </div>
           </motion.div>
         </div>
