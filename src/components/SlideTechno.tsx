@@ -6,29 +6,32 @@ import { useRef, useState } from 'react'
 const techCards = [
   {
     step: '01',
-    title: 'Capteurs IoT WaterSense',
-    subtitle: 'LoRaWAN / 4G · 3 profondeurs',
+    title: 'Des capteurs dans vos parcelles',
+    subtitle: 'Mesure en continu · Sans fil',
+    emoji: '📡',
     description:
-      'Sondes d\'humidité capacitives multi-profondeur (30, 60, 90 cm) + station météo locale. Mesures toutes les 15 min, chiffrées AES-256.',
-    specs: ['Kit : 1 400 € (3 sondes + station)', 'Installation : 600 €', 'Autonomie : 5 ans'],
+      'On installe 3 petites sondes dans le sol (à 30, 60 et 90 cm) + une mini station météo. Elles mesurent l\'humidité toutes les 15 minutes et envoient les données automatiquement.',
+    specs: ['Kit complet : 1 400 €', 'Posé en 1/2 journée : 600 €', 'Dure 5 ans sans entretien'],
     color: 'from-electric to-sky',
   },
   {
     step: '02',
-    title: 'Intelligence STICS-ML',
-    subtitle: 'INRAE × Machine Learning',
+    title: 'Une IA qui apprend votre terrain',
+    subtitle: 'Basée sur 40 ans de recherche agronomique',
+    emoji: '🧠',
     description:
-      'Le modèle STICS de l\'INRAE (40 ans de données) couplé à un réseau de neurones qui apprend le comportement spécifique de chaque parcelle.',
-    specs: ['Prescriptivité : 70-90%', 'Précision J+1 dès Y1', 'Calibré par culture & sol'],
+      'Notre algorithme combine 40 ans de données scientifiques avec ce que vos capteurs mesurent chaque jour. Plus il tourne, plus il connaît vos parcelles et plus ses recommandations sont précises.',
+    specs: ['Fiabilité : 70-90%', 'Précis dès la 1ère saison', 'S\'adapte à chaque culture'],
     color: 'from-emerald to-emerald-d',
   },
   {
     step: '03',
-    title: 'Satellite Sentinel-2',
-    subtitle: 'Copernicus · NDVI · 10 m',
+    title: 'Le satellite confirme tout',
+    subtitle: 'Vue aérienne européenne gratuite',
+    emoji: '🛰️',
     description:
-      'Imagerie Sentinel-2 (revisite 5 jours, résolution 10 m) pour validation croisée NDVI et continuité de service en cas d\'aléa matériel.',
-    specs: ['Résolution : 10 m/pixel', 'Revisite : 5 jours', 'Redondance opérationnelle'],
+      'Toutes les semaines, un satellite européen photographie vos parcelles depuis l\'espace. Ça permet de vérifier la santé de vos cultures et de garder le système fiable même si un capteur a un souci.',
+    specs: ['Photo tous les 5 jours', 'Précision : 10 m', 'Sécurité en cas de panne'],
     color: 'from-sky to-electric',
   },
 ]
@@ -48,16 +51,16 @@ export function SlideTechno() {
           className="text-center mb-10"
         >
           <p className="text-emerald font-semibold text-sm uppercase tracking-[0.2em] mb-3">
-            Preuve scientifique
+            Comment ça marche ?
           </p>
           <h2 className="text-3xl md:text-5xl font-bold mb-3">
-            L&apos;intelligence hybride{' '}
+            3 étapes,{' '}
             <span className="bg-gradient-to-r from-electric to-emerald bg-clip-text text-transparent">
-              STICS-ML
+              zéro prise de tête
             </span>
           </h2>
           <p className="text-white/60 text-lg max-w-2xl mx-auto">
-            La rigueur de l&apos;INRAE couplée à l&apos;apprentissage local de vos parcelles
+            De la science robuste, traduite en recommandations simples pour votre quotidien
           </p>
         </motion.div>
 
@@ -87,6 +90,7 @@ export function SlideTechno() {
                   <p className="font-semibold text-sm">{card.title}</p>
                   <p className="text-white/40 text-xs">{card.subtitle}</p>
                 </div>
+                <span className="text-xl ml-auto">{card.emoji}</span>
               </motion.button>
             ))}
           </div>
@@ -125,32 +129,9 @@ export function SlideTechno() {
               ))}
             </div>
 
-            {/* Visual: 3D-ish sensor illustration */}
-            <div className="mt-8 flex justify-center">
-              <div className="relative w-48 h-48">
-                {/* Central circle */}
-                <div className={`absolute inset-8 rounded-full bg-gradient-to-br ${techCards[active].color} opacity-20 animate-pulse`} />
-                <div className={`absolute inset-12 rounded-full bg-gradient-to-br ${techCards[active].color} opacity-40`} />
-                <div className={`absolute inset-16 rounded-full bg-gradient-to-br ${techCards[active].color} flex items-center justify-center`}>
-                  <span className="text-2xl font-bold text-white">{techCards[active].step}</span>
-                </div>
-                {/* Orbiting dots */}
-                {[0, 120, 240].map((deg) => (
-                  <motion.div
-                    key={deg}
-                    className="absolute w-3 h-3 rounded-full bg-white/60"
-                    style={{
-                      top: `${50 + 42 * Math.sin((deg * Math.PI) / 180)}%`,
-                      left: `${50 + 42 * Math.cos((deg * Math.PI) / 180)}%`,
-                    }}
-                    animate={{
-                      scale: [1, 1.4, 1],
-                      opacity: [0.5, 1, 0.5],
-                    }}
-                    transition={{ duration: 2, repeat: Infinity, delay: deg / 360 }}
-                  />
-                ))}
-              </div>
+            {/* Visual: emoji large */}
+            <div className="mt-6 flex justify-center">
+              <span className="text-7xl">{techCards[active].emoji}</span>
             </div>
           </motion.div>
         </div>

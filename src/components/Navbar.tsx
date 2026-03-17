@@ -6,9 +6,10 @@ import { useState } from 'react'
 const navLinks = [
   { label: 'Accueil', href: '#hero' },
   { label: 'Urgence', href: '#urgence' },
-  { label: 'Technologie', href: '#techno' },
+  { label: 'Comment \u00e7a marche', href: '#techno' },
   { label: 'Application', href: '#app' },
   { label: 'ROI', href: '#roi' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 export function Navbar() {

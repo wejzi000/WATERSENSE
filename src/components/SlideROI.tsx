@@ -181,10 +181,10 @@ export function SlideROI() {
           {/* Trust badges */}
           <div className="flex flex-wrap justify-center gap-6 mt-8">
             {[
-              'INRAE Partenaire',
-              'Sentinel-2 Copernicus',
+              'Recherche agronomique française',
+              'Satellite européen Copernicus',
               '-20% garanti par contrat',
-              'ODD 6 & 13',
+              'Agriculture durable (ODD 6 & 13)',
             ].map((badge) => (
               <span
                 key={badge}
