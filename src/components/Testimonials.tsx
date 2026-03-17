@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react'
 
 const items = [
   {
-    quote: "Dès la première saison, STICS-ML a cerné mes parcelles argilo-calcaires. 28 % d’eau en moins, 1 960 € d’économie nette.",
+    quote: "Dès la première saison, STICS-ML a cerné mes parcelles argilo-calcaires. 30 % d'eau en moins, 1 960 € d'économie nette sur 200 ha irrigués.",
     name:  'Jean-Pierre M.',
-    role:  'Céréalier — 280 ha, Beauce',
+    role:  'Céréalier — 280 ha dont 200 irrigués, Beauce',
   },
   {
-    quote: "On hésitait à 40 00 € pour un autre système. WaterSense nous a donné les prescriptions les plus fiables à un prix accessible.",
+    quote: "On hésitait à 40 000 € pour un système premium. WaterSense nous a donné les prescriptions les plus fiables à un prix accessible.",
     name:  'Sophie L.',
     role:  'Associée GAEC — 420 ha, Sud-Ouest',
   },

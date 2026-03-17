@@ -1,72 +1,50 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
+import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
-
-const links = [
-  { href: '#fonctionnement', label: 'Comment ça marche' },
-  { href: '#offres',         label: 'Tarifs' },
-  { href: '#simulateur',     label: 'Simulateur' },
-  { href: '#contact',        label: 'Contact' },
-]
+import { useState } from 'react'
 
 export function Navigation() {
-  const [open,     setOpen]     = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', fn, { passive: true })
-    return () => window.removeEventListener('scroll', fn)
-  }, [])
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
-    }`}>
-      <div className="wrap flex items-center justify-between h-16">
-        <a href="#" className="flex items-center gap-2.5 flex-shrink-0">
-          <Image src="/logo-watersense.png" alt="WaterSense" width={32} height={32} className="rounded-lg" />
-          <span className={`font-bold text-base tracking-tight transition-colors ${scrolled ? 'text-primary' : 'text-white'}`}>
-            WaterSense
-          </span>
-        </a>
-
-        <ul className="hidden md:flex items-center gap-8">
-          {links.map(l => (
-            <li key={l.href}>
-              <a href={l.href} className={`text-sm font-medium transition-colors ${
-                scrolled ? 'text-gray-600 hover:text-primary' : 'text-white/80 hover:text-white'
-              }`}>{l.label}</a>
-            </li>
-          ))}
-        </ul>
-
-        <a href="#contact" className="hidden md:inline-flex btn-primary text-sm py-2.5 px-5">
-          Démo gratuite
-        </a>
-
-        <button className="md:hidden p-2" onClick={() => setOpen(!open)} aria-label="Menu">
-          {open
-            ? <X  className={`w-5 h-5 ${scrolled ? 'text-gray-800' : 'text-white'}`} />
-            : <Menu className={`w-5 h-5 ${scrolled ? 'text-gray-800' : 'text-white'}`} />}
-        </button>
-      </div>
-
-      {open && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-6 py-5 flex flex-col gap-3">
-          {links.map(l => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)}
-               className="text-sm font-medium text-gray-700 hover:text-primary py-1.5">
-              {l.label}
-            </a>
-          ))}
-          <a href="#contact" onClick={() => setOpen(false)} className="btn-primary mt-2 justify-center">
-            Démo gratuite
-          </a>
+    <nav className="bg-white shadow-md sticky top-0 z-50">
+      <div className="container-watersense flex justify-between items-center py-4">
+        <Link href="/" className="text-2xl font-bold text-primary">
+          💧 WaterSense
+        </Link>
+        
+        <div className="hidden md:flex gap-6">
+          <Link href="/#features" className="hover:text-primary transition">Fonctionnalités</Link>
+          <Link href="/#benefits" className="hover:text-primary transition">Avantages</Link>
+          <Link href="/#simulator" className="hover:text-primary transition">Simulateur</Link>
+          <Link href="/#pricing" className="hover:text-primary transition">Tarifs</Link>
+          <Link href="/#contact" className="hover:text-primary transition">Contact</Link>
+          <Link href="/dashboard" className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition">
+            Mon Dashboard
+          </Link>
         </div>
-      )}
+
+        <button 
+          className="md:hidden"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+
+        {isOpen && (
+          <div className="absolute top-full left-0 right-0 bg-white md:hidden flex flex-col gap-4 p-4 border-t">
+            <Link href="/#features" className="hover:text-primary">Fonctionnalités</Link>
+            <Link href="/#benefits" className="hover:text-primary">Avantages</Link>
+            <Link href="/#simulator" className="hover:text-primary">Simulateur</Link>
+            <Link href="/#pricing" className="hover:text-primary">Tarifs</Link>
+            <Link href="/#contact" className="hover:text-primary">Contact</Link>
+            <Link href="/dashboard" className="bg-primary text-white px-4 py-2 rounded-lg text-center">
+              Mon Dashboard
+            </Link>
+          </div>
+        )}
+      </div>
     </nav>
   )
 }
