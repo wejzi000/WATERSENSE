@@ -6,21 +6,21 @@ import { Search, LineChart, ShieldCheck } from 'lucide-react'
 const features = [
   {
     icon: Search,
-    title: 'Détection Précoce des Fuites',
+    title: 'Recommandations Prescriptives',
     description:
-      "Nos capteurs intelligents identifient les micro-fuites instantanément, évitant des mètres cubes de gaspillage invisible.",
+      "Recevez des recommandations chiffrées : quand irriguer, quel volume, sur quelle parcelle. Fini l'interprétation de données brutes.",
   },
   {
     icon: LineChart,
-    title: 'Suivi Granulaire en Temps Réel',
+    title: 'Suivi Parcellaire Temps Réel',
     description:
-      "Visualisez votre consommation par site, par service ou par équipement pour identifier les sources d'optimisation.",
+      "Visualisez le stress hydrique parcelle par parcelle, avec carte géolocalisée et priorités d'irrigation en temps réel.",
   },
   {
     icon: ShieldCheck,
-    title: 'Rapports de Conformité RSE',
+    title: 'Modèles Calibrés France',
     description:
-      "Générez automatiquement des rapports certifiés pour votre bilan RSE, prouvant votre engagement environnemental.",
+      "Algorithmes calibrés sur les cultures françaises (blé, maïs, colza) et les données Météo France pour des recommandations localisées.",
   },
 ]
 

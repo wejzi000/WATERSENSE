@@ -15,7 +15,7 @@ import {
 export function ROICalculator() {
   const [waterVolume, setWaterVolume] = useState(5000)
   const [currentCost, setCurrentCost] = useState(3.5)
-  const [solutionCost, setSolutionCost] = useState(2500)
+  const [solutionCost, setSolutionCost] = useState(1500)
 
   // Logique mathématique de base
   const newVolume = waterVolume * 0.80

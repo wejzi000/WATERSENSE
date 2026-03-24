@@ -27,8 +27,9 @@ export function CtaSection() {
 
         {/* Sous-titre rassurant */}
         <p className="font-sans text-lg md:text-xl text-cyan-100 mb-10 max-w-2xl mx-auto leading-relaxed">
-          Rejoignez les entreprises qui ont déjà réduit leur facture d'eau de
-          20&nbsp;% dès le premier trimestre d'utilisation de WaterSense.
+          Rejoignez nos premiers exploitants pilotes et réduisez votre budget
+          irrigation de 20-30&nbsp;%. Offre early adopter : -30&nbsp;% la
+          première année.
         </p>
 
         {/* Boutons d'action */}
@@ -47,7 +48,7 @@ export function CtaSection() {
 
         {/* Rassurance */}
         <p className="mt-6 text-sm text-cyan-200/60 font-sans">
-          Sans engagement • Déploiement en 48h
+          Sans engagement • Mise en service accompagnée
         </p>
       </motion.div>
     </section>

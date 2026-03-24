@@ -29,7 +29,7 @@ const plans = [
       'Dashboard complet + météo avancée',
       'Alertes email + SMS + app mobile',
       'Consultations agronomiques trimestrielles',
-      'Rapports de conformité RSE',
+      'Intégration météo avancée',
       'Support prioritaire (réponse 24h)',
     ],
     cta: 'Choisir Professional',
@@ -73,6 +73,9 @@ export function PricingSection() {
           </h2>
           <p className="mt-4 text-base text-ink/60 max-w-xl mx-auto leading-relaxed font-sans">
             Pas de frais cachés. Déploiement inclus. Résiliable à tout moment.
+          </p>
+          <p className="mt-2 inline-block rounded-full bg-accent/10 px-4 py-1.5 text-sm font-semibold text-accent-dark">
+            Offre lancement : -30 % la première année
           </p>
         </motion.div>
 

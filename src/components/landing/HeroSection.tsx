@@ -4,9 +4,9 @@ import { motion } from 'framer-motion'
 import { ArrowRight, Droplets, BarChart3, ShieldCheck } from 'lucide-react'
 
 const badges = [
-  { icon: Droplets,    label: "Économie 20-35 % d'eau" },
-  { icon: BarChart3,   label: "ROI dès la 1re saison" },
-  { icon: ShieldCheck, label: "Données hébergées en France" },
+  { icon: Droplets,    label: "Économie 20-30 % d'eau" },
+  { icon: BarChart3,   label: "ROI estimé dès la 1re saison" },
+  { icon: ShieldCheck, label: "Données hébergées en Europe (RGPD)" },
 ]
 
 export function HeroSection() {
@@ -38,9 +38,9 @@ export function HeroSection() {
               <span className="text-primary">de 20 %.</span>
             </h1>
             <p className="mt-5 text-base leading-relaxed text-ink/70 sm:text-lg">
-              WaterSense combine capteurs IoT et modèle agronomique STICS pour
-              transformer chaque mètre cube en décision mesurable. Moins d'eau,
-              plus de rendement.
+              WaterSense combine capteurs IoT et modèles agronomiques calibrés
+              pour transformer chaque mètre cube en décision mesurable. Moins
+              d'eau, rendement préservé.
             </p>
 
             {/* CTA group */}
@@ -87,16 +87,16 @@ export function HeroSection() {
                     Tableau de bord — Parcelle Sud
                   </span>
                   <span className="rounded-btn bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent-dark">
-                    En direct
+                    Simulation
                   </span>
                 </div>
 
                 {/* KPI row */}
                 <div className="grid grid-cols-3 gap-4">
                   {[
-                    { value: '−28 %', sub: 'Eau consommée',  color: 'text-primary' },
-                    { value: '71 %',  sub: 'Prescriptivité', color: 'text-accent-dark' },
-                    { value: '4,2x',  sub: 'ROI matériel',   color: 'text-primary' },
+                    { value: '−25 %', sub: 'Eau consommée',  color: 'text-primary' },
+                    { value: '< 6 mois', sub: 'Amortissement', color: 'text-accent-dark' },
+                    { value: '5',     sub: 'Parcelles pilotes', color: 'text-primary' },
                   ].map((kpi) => (
                     <div
                       key={kpi.sub}

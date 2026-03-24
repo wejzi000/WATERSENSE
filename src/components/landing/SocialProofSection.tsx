@@ -16,7 +16,7 @@ export function SocialProofSection() {
       >
         {/* Titre discret */}
         <p className="text-sm font-medium text-gray-400 font-sans uppercase tracking-widest mb-8">
-          Ils optimisent leurs ressources avec WaterSense
+          Partenaires et soutiens institutionnels
         </p>
 
         {/* Conteneur des logos */}
