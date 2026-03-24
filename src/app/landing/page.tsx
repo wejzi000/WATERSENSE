@@ -8,7 +8,7 @@ import { SocialProofSection } from '@/components/landing/SocialProofSection'
 import { CtaSection }         from '@/components/landing/CtaSection'
 import { Footer }             from '@/components/landing/Footer'
 
-export default function Home() {
+export default function LandingPage() {
   return (
     <>
       <Header />

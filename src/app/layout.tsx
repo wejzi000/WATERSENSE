@@ -1,17 +1,25 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Outfit } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  variable: '--font-outfit',
+})
 
 export const metadata: Metadata = {
-  title: 'WaterSense - Irrigation Intelligente',
-  description: 'Plateforme IoT pour l\'irrigation agricole optimisée par IA',
+  title: 'WaterSense - Gestion intelligente de l\'eau agricole',
+  description: 'Réduisez vos coûts liés à l\'eau de 20 % grâce à l\'IoT et l\'IA. Plateforme SaaS pour l\'irrigation de précision.',
   manifest: '/manifest.json',
   viewport: 'width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes',
   appleWebApp: {
     capable: true,
-    statusBarStyle: 'black-translucent',
+    statusBarStyle: 'default',
     title: 'WaterSense'
   },
   formatDetection: {
@@ -25,14 +33,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={`${inter.variable} ${outfit.variable}`}>
       <head>
-        <meta name="theme-color" content="#0066CC" />
+        <meta name="theme-color" content="#0F4C5C" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/logo.svg" />
         <link rel="apple-touch-icon" href="/logo.svg" />
       </head>
-      <body className={inter.className}>
+      <body className="font-sans bg-surface text-ink antialiased">
         {children}
         <script dangerouslySetInnerHTML={{
           __html: `

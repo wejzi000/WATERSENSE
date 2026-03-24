@@ -9,16 +9,34 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'deep':      '#0A1628',
-        'electric':  '#38BDF8',
-        'emerald':   '#10B981',
-        'emerald-d': '#059669',
-        'navy':      '#0F2844',
-        'sky':       '#38BDF8',
-        'light':     '#F1F5F9',
+        // Fond global — jamais de blanc pur
+        surface:    '#F9FAFB',
+        // Texte principal — jamais de noir pur
+        ink:        '#1E293B',
+        // Primaire bleu canard
+        primary: {
+          DEFAULT: '#0F4C5C',
+          light:   '#13616F',
+          dark:    '#0B3A47',
+        },
+        // Accent cyan doux
+        accent: {
+          DEFAULT: '#5FA8D3',
+          light:   '#84BDE0',
+          dark:    '#3D8FBF',
+        },
+        // Bordures & séparateurs
+        border:     '#E5E7EB', // gray-200
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['var(--font-outfit)', 'Outfit', 'system-ui', 'sans-serif'],
+        sans:    ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+      },
+      boxShadow: {
+        card: '0 1px 3px 0 rgba(15,76,92,0.06), 0 1px 2px -1px rgba(15,76,92,0.04)',
+      },
+      borderRadius: {
+        btn: '0.375rem', // rounded-md — pas de rounded-full
       },
     },
   },
