@@ -7,8 +7,8 @@ const plans = [
   {
     name: 'Starter',
     description: 'Exploitations < 100 ha. Maraîchage, petites structures.',
-    price: '800',
-    period: '€/an',
+    price: '15',
+    period: '€/ha/an',
     features: [
       'Jusqu\'à 5 capteurs',
       'Plateforme web de base',
@@ -21,9 +21,9 @@ const plans = [
   },
   {
     name: 'Professional',
-    description: 'Exploitations 100-300 ha. Notre offre cœur de cible.',
-    price: '1 500',
-    period: '€/an',
+    description: 'Exploitations 100-300 ha. Offre cœur de cible.',
+    price: '19',
+    period: '€/ha/an',
     features: [
       'Jusqu\'à 20 capteurs',
       'Dashboard complet + météo avancée',
@@ -38,8 +38,8 @@ const plans = [
   {
     name: 'Enterprise',
     description: 'Exploitations > 300 ha. Tarification sur mesure.',
-    price: '3 000 – 6 000',
-    period: '€/an',
+    price: 'Sur devis',
+    period: '€/ha/an',
     features: [
       'Capteurs illimités',
       'Tout le plan Professional',
