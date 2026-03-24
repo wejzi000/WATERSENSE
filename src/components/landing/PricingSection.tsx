@@ -6,47 +6,47 @@ import { Check } from 'lucide-react'
 const plans = [
   {
     name: 'Starter',
-    description: 'Pour les petites structures qui démarrent leur optimisation.',
-    price: '149',
-    period: '/mois',
+    description: 'Exploitations < 100 ha. Maraîchage, petites structures.',
+    price: '800',
+    period: '€/an',
     features: [
-      'Jusqu\'à 5 points de mesure',
-      'Tableau de bord temps réel',
-      'Alertes fuites par email',
-      'Rapport mensuel automatique',
-      'Support par email',
+      'Jusqu\'à 5 capteurs',
+      'Plateforme web de base',
+      'Alertes SMS & recommandations',
+      'Support email (réponse 48h)',
+      'Essai gratuit 30 jours',
     ],
     cta: 'Commencer',
     highlighted: false,
   },
   {
-    name: 'Business',
-    description: 'Pour les entreprises qui veulent un ROI mesurable rapidement.',
-    price: '399',
-    period: '/mois',
+    name: 'Professional',
+    description: 'Exploitations 100-300 ha. Notre offre cœur de cible.',
+    price: '1 500',
+    period: '€/an',
     features: [
-      'Jusqu\'à 25 points de mesure',
-      'Tout le plan Starter',
-      'Algorithmes prédictifs IA',
+      'Jusqu\'à 20 capteurs',
+      'Dashboard complet + météo avancée',
+      'Alertes email + SMS + app mobile',
+      'Consultations agronomiques trimestrielles',
       'Rapports de conformité RSE',
-      'Intégration API & ERP',
-      'Support prioritaire',
+      'Support prioritaire (réponse 24h)',
     ],
-    cta: 'Choisir Business',
+    cta: 'Choisir Professional',
     highlighted: true,
   },
   {
     name: 'Enterprise',
-    description: 'Sur mesure pour les grands comptes et multi-sites.',
-    price: 'Sur devis',
-    period: '',
+    description: 'Exploitations > 300 ha. Tarification sur mesure.',
+    price: '3 000 – 6 000',
+    period: '€/an',
     features: [
-      'Points de mesure illimités',
-      'Tout le plan Business',
+      'Capteurs illimités',
+      'Tout le plan Professional',
+      'Intégration ERP & API propriétaire',
+      'Support dédié personnel WaterSense',
       'Déploiement multi-sites',
-      'SLA garanti 99,9 %',
       'Account manager dédié',
-      'Formation sur site',
     ],
     cta: 'Nous contacter',
     highlighted: false,
@@ -105,7 +105,9 @@ export function PricingSection() {
               </p>
 
               <div className="mt-6 mb-6">
-                <span className="font-display text-4xl font-extrabold text-ink">
+                <span className={`font-display font-extrabold text-ink ${
+                  plan.price.length > 6 ? 'text-2xl' : 'text-4xl'
+                }`}>
                   {plan.price}
                 </span>
                 {plan.period && (
