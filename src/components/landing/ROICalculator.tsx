@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import {
   AreaChart,
   Area,
@@ -38,7 +39,13 @@ export function ROICalculator() {
     <section id="roi" className="bg-surface py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-6">
         {/* Section heading */}
-        <div className="mb-14 max-w-2xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="mb-14 max-w-2xl"
+        >
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-accent">
             Simulateur
           </p>
@@ -49,10 +56,16 @@ export function ROICalculator() {
             Renseignez votre consommation actuelle. Le simulateur calcule
             automatiquement vos économies avec une réduction de 20&nbsp;%.
           </p>
-        </div>
+        </motion.div>
 
         {/* Carte principale */}
-        <div className="max-w-5xl mx-auto rounded-xl border border-border bg-surface p-6 shadow-card">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="max-w-5xl mx-auto rounded-xl border border-border bg-surface p-6 shadow-card"
+        >
 
           {/* Haut : Les Inputs et le Résultat immédiat */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
@@ -172,7 +185,7 @@ export function ROICalculator() {
             </div>
           </div>
 
-        </div>
+        </motion.div>
       </div>
     </section>
   )

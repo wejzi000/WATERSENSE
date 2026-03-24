@@ -1,5 +1,6 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
 export function CtaSection() {
@@ -11,7 +12,13 @@ export function CtaSection() {
         <div className="absolute -bottom-[20%] -left-[10%] w-[400px] h-[400px] rounded-full bg-accent/10 blur-3xl" />
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7 }}
+        className="max-w-4xl mx-auto px-6 text-center relative z-10"
+      >
         {/* Titre accrocheur */}
         <h2 className="font-display text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight leading-tight">
           Prêt à transformer vos pertes en{' '}
@@ -42,7 +49,7 @@ export function CtaSection() {
         <p className="mt-6 text-sm text-cyan-200/60 font-sans">
           Sans engagement • Déploiement en 48h
         </p>
-      </div>
+      </motion.div>
     </section>
   )
 }

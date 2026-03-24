@@ -1,11 +1,19 @@
 'use client'
 
+import { motion } from 'framer-motion'
+
 export function SocialProofSection() {
   const placeholders = Array.from({ length: 5 })
 
   return (
     <section className="py-12 bg-white border-y border-gray-100">
-      <div className="mx-auto max-w-6xl px-6 text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.6 }}
+        className="mx-auto max-w-6xl px-6 text-center"
+      >
         {/* Titre discret */}
         <p className="text-sm font-medium text-gray-400 font-sans uppercase tracking-widest mb-8">
           Ils optimisent leurs ressources avec WaterSense
@@ -22,7 +30,7 @@ export function SocialProofSection() {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

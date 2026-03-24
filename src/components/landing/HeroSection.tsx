@@ -1,5 +1,6 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import { ArrowRight, Droplets, BarChart3, ShieldCheck } from 'lucide-react'
 
 const badges = [
@@ -23,7 +24,12 @@ export function HeroSection() {
       <div className="relative mx-auto max-w-6xl px-6">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           {/* ── Copy ── */}
-          <div className="max-w-xl">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            className="max-w-xl"
+          >
             <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-accent">
               Irrigation de précision
             </p>
@@ -63,10 +69,15 @@ export function HeroSection() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* ── Visual ── */}
-          <div className="relative hidden lg:block">
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
+            className="relative hidden lg:block"
+          >
             <div className="relative mx-auto w-full max-w-md">
               {/* Card dashboard mock */}
               <div className="rounded-xl border border-border bg-white p-6 shadow-card">
@@ -122,7 +133,7 @@ export function HeroSection() {
                 className="absolute -bottom-6 -left-6 h-24 w-24 rounded-full bg-accent/10"
               />
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

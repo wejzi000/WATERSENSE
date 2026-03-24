@@ -1,5 +1,6 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import { Search, LineChart, ShieldCheck } from 'lucide-react'
 
 const features = [
@@ -29,20 +30,30 @@ export function FeaturesSection() {
       <div className="mx-auto max-w-6xl">
 
         {/* Titre de section */}
-        <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <p className="text-sm font-semibold text-accent font-sans uppercase tracking-wide">
             L'efficacité prouvée
           </p>
           <h2 className="font-display text-4xl font-extrabold text-primary mt-2 tracking-tight">
             Comment WaterSense réduit votre facture d'eau
           </h2>
-        </div>
+        </motion.div>
 
         {/* Grille des cartes */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {features.map((feat) => (
-            <div
+          {features.map((feat, i) => (
+            <motion.div
               key={feat.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: i * 0.15 }}
               className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300"
             >
               {/* Conteneur de l'icône */}
@@ -57,7 +68,7 @@ export function FeaturesSection() {
               <p className="font-sans text-base text-ink/60 leading-relaxed">
                 {feat.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
