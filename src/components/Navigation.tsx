@@ -10,8 +10,9 @@ export function Navigation() {
   return (
     <nav className="bg-gray-950/80 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50">
       <div className="container-watersense flex justify-between items-center py-4">
-        <Link href="/" className="text-2xl font-bold bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">
-          💧 WaterSense
+        <Link href="/" className="flex items-center gap-2">
+          <img src="/logo-watersense.png" alt="WaterSense Logo" className="h-10 w-auto" />
+          <span className="text-2xl font-bold bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">WaterSense</span>
         </Link>
         
         <div className="hidden md:flex gap-6">
