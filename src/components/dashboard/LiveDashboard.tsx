@@ -138,12 +138,12 @@ export function LiveDashboard() {
               className={`px-4 py-1.5 rounded-full border text-sm font-semibold transition-all duration-200 focus:outline-none ${selectedCulture === c.key ? 'bg-cyan-400/20 border-cyan-400 text-cyan-300 shadow' : 'bg-gray-900/40 border-cyan-400/10 text-gray-300 hover:bg-cyan-400/10'}`}
             >
               {c.label}
-            <button
-              onClick={handleGeneratePDF}
-              className="mt-8 w-full md:w-auto flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-cyan-400 text-gray-900 font-bold text-lg shadow-glow-cyan hover:bg-cyan-300 transition-all duration-200 focus:outline-none"
-            >
-              <Download className="w-6 h-6" /> Générer Bilan de Saison (PDF)
             </button>
+          ))}
+        </div>
+
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-2">
           <div>
             <h3 className="font-display text-2xl md:text-3xl font-bold text-white tracking-tight mb-1">
               Dashboard Temps Réel — <span className="text-cyan-400">{culture.subtitle}</span>
