@@ -35,15 +35,21 @@ export function CtaSection() {
         {/* Boutons d'action */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           {/* Bouton Primaire */}
-          <button className="w-full sm:w-auto px-8 py-4 bg-white text-primary font-semibold font-sans rounded-lg shadow-[0_8px_30px_rgb(255,255,255,0.1)] hover:shadow-[0_8px_30px_rgb(255,255,255,0.2)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 group">
+          <a
+            href="#contact"
+            className="w-full sm:w-auto px-8 py-4 bg-white text-primary font-semibold font-sans rounded-lg shadow-[0_8px_30px_rgb(255,255,255,0.1)] hover:shadow-[0_8px_30px_rgb(255,255,255,0.2)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 group"
+          >
             Demander une démo
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
+          </a>
 
           {/* Bouton Secondaire */}
-          <button className="w-full sm:w-auto px-8 py-4 bg-transparent text-white font-semibold font-sans rounded-lg border border-white/30 hover:bg-white/10 transition-all duration-300">
+          <a
+            href="#contact"
+            className="w-full sm:w-auto px-8 py-4 bg-transparent text-white font-semibold font-sans rounded-lg border border-white/30 hover:bg-white/10 transition-all duration-300 flex items-center justify-center"
+          >
             Contacter les ventes
-          </button>
+          </a>
         </div>
 
         {/* Rassurance */}

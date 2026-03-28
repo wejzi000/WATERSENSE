@@ -7,7 +7,7 @@ export function ContactSection() {
   return (
     <section id="contact" className="pt-40 pb-20 bg-white">
       <div className="flex flex-col items-center justify-center">
-        <h2 className="text-4xl font-extrabold mb-4 text-primary">🚀 Prêt à passer à l’action&nbsp;?</h2>
+        <h2 className="text-4xl font-extrabold mb-4 text-primary">Prêt à passer à l’action&nbsp;?</h2>
         <p className="mb-8 text-lg text-gray-700 text-center max-w-2xl">Remplissez le formulaire ci-dessous pour demander une démo, un devis ou poser toutes vos questions à notre équipe. Nous vous répondrons sous 24h.</p>
         <motion.div
           initial={{ opacity: 0, x: 30 }}
