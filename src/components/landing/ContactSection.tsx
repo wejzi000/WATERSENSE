@@ -5,7 +5,7 @@ import { ContactForm } from '../ContactForm'
 
 export function ContactSection() {
   return (
-    <section>
+    <section id="contact" className="pt-40 pb-20 bg-white">
       <div>
         <div>
           <motion.div
