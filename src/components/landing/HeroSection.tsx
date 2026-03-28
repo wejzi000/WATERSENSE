@@ -37,7 +37,7 @@ export function HeroSection() {
   ];
   const parcelle = PARCELLES[selected];
   return (
-    <section className="relative overflow-hidden bg-surface pt-28 pb-20 lg:pt-36 lg:pb-28">
+    <section className="relative overflow-hidden bg-transparent pt-28 pb-20 lg:pt-36 lg:pb-28">
       {/* Subtle gradient ornament */}
       <div
         aria-hidden="true"
@@ -56,14 +56,14 @@ export function HeroSection() {
             transition={{ duration: 0.7, ease: 'easeOut' }}
             className="max-w-xl"
           >
-            <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-accent">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-cyan-400">
               Irrigation de précision
             </p>
-            <h1 className="font-display text-4xl font-bold leading-[1.15] text-ink sm:text-5xl">
+            <h1 className="font-display text-4xl font-bold leading-[1.15] bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent sm:text-5xl">
               Réduisez vos coûts liés à l'eau{' '}
-              <span className="text-primary">de 20 %.</span>
+              <span className="text-cyan-400">de 20 %.</span>
             </h1>
-            <p className="mt-5 text-base leading-relaxed text-ink/70 sm:text-lg">
+            <p className="mt-5 text-base leading-relaxed text-gray-300 sm:text-lg">
               WaterSense combine capteurs IoT et modèles agronomiques calibrés
               pour transformer chaque mètre cube en décision mesurable. Moins
               d'eau, rendement préservé.
@@ -73,14 +73,14 @@ export function HeroSection() {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 rounded-btn bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+                className="inline-flex items-center gap-2 rounded-full bg-cyan-500 text-gray-950 font-semibold px-6 py-3 shadow-glow-cyan-btn transition-all hover:bg-cyan-400 hover:shadow-glow-cyan-strong"
               >
                 Demander une démo
                 <ArrowRight size={16} />
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 rounded-btn border border-border px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-primary/5"
+                className="inline-flex items-center gap-2 rounded-full border border-cyan-900/50 text-cyan-400 px-6 py-3 font-semibold bg-gray-950/40 hover:border-cyan-500/80 hover:bg-cyan-400/10 hover:text-cyan-300 shadow-glow-cyan-btn transition-all"
               >
                 Contacter les ventes
               </a>
@@ -91,8 +91,8 @@ export function HeroSection() {
             {/* Trust badges */}
             <ul className="mt-10 flex flex-wrap gap-6">
               {badges.map(({ icon: Icon, label }) => (
-                <li key={label} className="flex items-center gap-2 text-sm text-ink/60">
-                  <Icon size={16} className="text-accent" />
+                <li key={label} className="flex items-center gap-2 text-sm text-cyan-400">
+                  <Icon size={16} className="text-cyan-400" />
                   {label}
                 </li>
               ))}
@@ -110,13 +110,13 @@ export function HeroSection() {
           >
             {/* Parcelles fictives pour la démo */}
             <div className="relative mx-auto w-full max-w-md">
-              <div className="rounded-xl border border-border bg-white p-6 shadow-card">
+              <div className="rounded-2xl border border-cyan-900/50 bg-gray-950/40 backdrop-blur-lg shadow-glow-cyan p-6 hover:border-cyan-500/80 hover:shadow-glow-cyan-strong transition-all duration-300">
                 {/* Mini header + sélecteur */}
                 <div className="mb-5 flex items-center justify-between">
-                  <span className="font-display text-sm font-semibold text-ink">
+                  <span className="font-display text-sm font-semibold text-cyan-400">
                     Tableau de bord —
                     <select
-                      className="ml-2 bg-transparent font-display text-sm text-primary outline-none border-b border-accent/40 focus:border-accent"
+                      className="ml-2 bg-transparent font-display text-sm text-cyan-400 outline-none border-b border-cyan-400/40 focus:border-cyan-400"
                       value={selected}
                       onChange={e => setSelected(Number(e.target.value))}
                     >
@@ -125,31 +125,31 @@ export function HeroSection() {
                       ))}
                     </select>
                   </span>
-                  <span className="rounded-btn bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent-dark">
+                  <span className="rounded-btn bg-cyan-400/10 px-2.5 py-0.5 text-xs font-medium text-cyan-400">
                     Simulation
                   </span>
                 </div>
 
                 {/* KPI row animée */}
                 <div className="grid grid-cols-3 gap-4">
-                  <div className="rounded-lg border border-border bg-surface px-3 py-4 text-center">
-                    <p className="font-display text-xl font-bold text-primary">
+                  <div className="rounded-lg border border-cyan-900/50 bg-gray-950/40 backdrop-blur-lg px-3 py-4 text-center">
+                    <p className="font-display text-xl font-bold text-cyan-400">
                       <CountUp end={-parcelle.kpis.eau} duration={1} /> %
                     </p>
-                    <p className="mt-1 text-[11px] text-ink/50">Eau consommée</p>
+                    <p className="mt-1 text-[11px] text-cyan-400/70">Eau consommée</p>
                   </div>
-                  <div className="rounded-lg border border-border bg-surface px-3 py-4 text-center">
-                    <p className="font-display text-xl font-bold text-accent-dark">
+                  <div className="rounded-lg border border-cyan-900/50 bg-gray-950/40 backdrop-blur-lg px-3 py-4 text-center">
+                    <p className="font-display text-xl font-bold text-cyan-400">
                       {'< '}
                       <CountUp end={parcelle.kpis.amort} duration={1} /> mois
                     </p>
-                    <p className="mt-1 text-[11px] text-ink/50">Amortissement</p>
+                    <p className="mt-1 text-[11px] text-cyan-400/70">Amortissement</p>
                   </div>
-                  <div className="rounded-lg border border-border bg-surface px-3 py-4 text-center">
-                    <p className="font-display text-xl font-bold text-primary">
+                  <div className="rounded-lg border border-cyan-900/50 bg-gray-950/40 backdrop-blur-lg px-3 py-4 text-center">
+                    <p className="font-display text-xl font-bold text-cyan-400">
                       <CountUp end={parcelle.kpis.pilotes} duration={1} />
                     </p>
-                    <p className="mt-1 text-[11px] text-ink/50">Parcelles pilotes</p>
+                    <p className="mt-1 text-[11px] text-cyan-400/70">Parcelles pilotes</p>
                   </div>
                 </div>
 
@@ -167,7 +167,7 @@ export function HeroSection() {
                     </AreaChart>
                   </ResponsiveContainer>
                 </div>
-                <p className="mt-2 text-center text-[10px] text-ink/40">
+                <p className="mt-2 text-center text-[10px] text-cyan-400/40">
                   Économies cumulées — 12 derniers mois
                 </p>
               </div>
