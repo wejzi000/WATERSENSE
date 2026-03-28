@@ -15,11 +15,11 @@ export function Navigation() {
         </Link>
         
         <div className="hidden md:flex gap-6">
-          <Link href="/#features" className="text-gray-300 hover:text-cyan-400 transition-colors">Fonctionnalités</Link>
-          <Link href="/#benefits" className="text-gray-300 hover:text-cyan-400 transition-colors">Avantages</Link>
-          <Link href="/#simulator" className="text-gray-300 hover:text-cyan-400 transition-colors">Simulateur</Link>
-          <Link href="/#pricing" className="text-gray-300 hover:text-cyan-400 transition-colors">Tarifs</Link>
-          <Link href="/#contact" className="text-gray-300 hover:text-cyan-400 transition-colors">Contact</Link>
+          <Link href="/#features" className="text-white hover:text-cyan-400 transition-colors">Fonctionnalités</Link>
+          <Link href="/#benefits" className="text-white hover:text-cyan-400 transition-colors">Avantages</Link>
+          <Link href="/#simulator" className="text-white hover:text-cyan-400 transition-colors">Simulateur</Link>
+          <Link href="/#pricing" className="text-white hover:text-cyan-400 transition-colors">Tarifs</Link>
+          <Link href="/#contact" className="text-white hover:text-cyan-400 transition-colors">Contact</Link>
           <Link href="/dashboard" className="bg-cyan-500 text-gray-950 px-4 py-2 rounded-full shadow-glow-cyan-btn hover:bg-cyan-400 hover:shadow-glow-cyan-strong transition-all">
             Mon Dashboard
           </Link>

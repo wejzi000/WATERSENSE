@@ -59,11 +59,11 @@ export function HeroSection() {
             <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-cyan-400">
               Irrigation de précision
             </p>
-            <h1 className="font-display text-4xl font-bold leading-[1.15] bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent sm:text-5xl">
+            <h1 className="font-display text-4xl font-bold leading-[1.15] bg-gradient-to-b from-white to-gray-100 bg-clip-text text-transparent sm:text-5xl">
               Réduisez vos coûts liés à l'eau{' '}
               <span className="text-cyan-400">de 20 %.</span>
             </h1>
-            <p className="mt-5 text-base leading-relaxed text-gray-300 sm:text-lg">
+            <p className="mt-5 text-base leading-relaxed text-gray-100 sm:text-lg">
               WaterSense combine capteurs IoT et modèles agronomiques calibrés
               pour transformer chaque mètre cube en décision mesurable. Moins
               d'eau, rendement préservé.

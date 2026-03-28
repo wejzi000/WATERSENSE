@@ -104,13 +104,13 @@ export function PricingSection() {
               </p>
 
               <div className="mt-6 mb-6">
-                <span className={`font-display font-extrabold text-ink ${
+                <span className={`font-display font-extrabold text-white ${
                   plan.price.length > 6 ? 'text-2xl' : 'text-4xl'
                 }`}>
                   {plan.price}
                 </span>
                 {plan.period && (
-                  <span className="text-sm text-ink/50 font-sans">
+                  <span className="text-sm text-gray-100 font-sans">
                     {' '}{plan.period}
                   </span>
                 )}
