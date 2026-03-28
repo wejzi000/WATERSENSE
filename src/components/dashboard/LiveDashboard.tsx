@@ -94,23 +94,8 @@ export function LiveDashboard() {
     { day: 'J-3', value: humidity[0] - 1 },
     { day: 'J-2', value: humidity[0] },
     { day: 'J-1', value: humidity[0] + 2 },
-    { day: 'Aujourd\'hui', value: humidity[0] },
+    { day: "Aujourd'hui", value: humidity[0] },
   ];
-        {/* Graphique d'évolution de l'humidité (exemple) */}
-        <div className="bg-gray-900/60 border border-cyan-400/10 rounded-xl px-6 py-5 mt-2">
-          <h4 className="text-cyan-300 font-semibold mb-2 text-sm">Évolution de l'humidité (30cm)</h4>
-          <div style={{ width: '100%', height: 180 }}>
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={humidityHistory} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#164e63" />
-                <XAxis dataKey="day" stroke="#67e8f9" fontSize={12} />
-                <YAxis stroke="#67e8f9" fontSize={12} domain={[0, 100]} tickFormatter={(v) => v + '%'} />
-                <Tooltip contentStyle={{ background: '#0f172a', border: '1px solid #06b6d4', color: '#fff' }} formatter={(v) => v + '%'} />
-                <Line type="monotone" dataKey="value" stroke="#06b6d4" strokeWidth={3} dot={{ r: 4, fill: '#06b6d4' }} activeDot={{ r: 6 }} />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
 
   // Handler pour la génération PDF
   const handleGeneratePDF = async () => {
@@ -266,9 +251,24 @@ export function LiveDashboard() {
           </div>
         </div>
 
+        {/* Graphique d'évolution de l'humidité (exemple) */}
+        <div className="bg-gray-900/60 border border-cyan-400/10 rounded-xl px-6 py-5 mt-8">
+          <h4 className="text-cyan-300 font-semibold mb-2 text-sm">Évolution de l'humidité (30cm)</h4>
+          <div style={{ width: '100%', height: 180 }}>
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={humidityHistory} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#164e63" />
+                <XAxis dataKey="day" stroke="#67e8f9" fontSize={12} />
+                <YAxis stroke="#67e8f9" fontSize={12} domain={[0, 100]} tickFormatter={(v) => v + '%'} />
+                <Tooltip contentStyle={{ background: '#0f172a', border: '1px solid #06b6d4', color: '#fff' }} formatter={(v) => v + '%'} />
+                <Line type="monotone" dataKey="value" stroke="#06b6d4" strokeWidth={3} dot={{ r: 4, fill: '#06b6d4' }} activeDot={{ r: 6 }} />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
         {/* Footer / CTA */}
         <div className="flex justify-end mt-6">
-          <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-cyan-500 text-gray-950 font-semibold shadow-glow-cyan-btn hover:bg-cyan-400 hover:shadow-glow-cyan-strong transition-all">
+          <button onClick={handleGeneratePDF} className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-cyan-500 text-gray-950 font-semibold shadow-glow-cyan-btn hover:bg-cyan-400 hover:shadow-glow-cyan-strong transition-all">
             <Download className="w-5 h-5" /> Générer Bilan de Saison (PDF)
           </button>
         </div>
