@@ -4,7 +4,7 @@ import emailjs from '@emailjs/browser';
 export function ContactForm() {
   const form = useRef<HTMLFormElement>(null);
 
-  const sendEmail = (e) => {
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     emailjs.sendForm(
       'service_0ooutfj',      // Service ID EmailJS
@@ -14,7 +14,7 @@ export function ContactForm() {
     )
     .then(() => {
       alert('Message envoyé !');
-      form.current.reset();
+      form.current?.reset();
     }, (error) => {
       alert('Erreur lors de l\'envoi : ' + error.text);
     });
