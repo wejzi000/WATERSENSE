@@ -9,8 +9,8 @@ export function ContactForm() {
       data-success-message="Votre message a bien été envoyé ! Merci pour votre prise de contact. Nous vous répondrons rapidement."
     >
       <input type="hidden" name="access_key" value="93d1ad3f-a137-4590-aafc-7ddb9b03bdad" />
-      <input type="text" name="name" placeholder="Jean Dupont" required className="w-full rounded border border-cyan-900/50 bg-transparent px-4 py-2 mb-4 text-white placeholder-gray-400 focus:border-cyan-400 focus:ring-0" />
-      <input type="email" name="email" placeholder="jean.dupont@email.com" required className="w-full rounded border border-cyan-900/50 bg-transparent px-4 py-2 mb-4 text-white placeholder-gray-400 focus:border-cyan-400 focus:ring-0" />
+      <input type="text" name="name" placeholder="Patrick Leleu" required className="w-full rounded border border-cyan-900/50 bg-transparent px-4 py-2 mb-4 text-white placeholder-gray-400 focus:border-cyan-400 focus:ring-0" />
+      <input type="email" name="email" placeholder="patrick.leleu@email.com" required className="w-full rounded border border-cyan-900/50 bg-transparent px-4 py-2 mb-4 text-white placeholder-gray-400 focus:border-cyan-400 focus:ring-0" />
       <textarea name="message" placeholder="Votre message" required rows={4} className="w-full rounded border border-cyan-900/50 bg-transparent px-4 py-2 mb-4 text-white placeholder-gray-400 focus:border-cyan-400 focus:ring-0" />
       <button type="submit" className="w-full rounded-full bg-cyan-500 text-gray-950 font-semibold px-6 py-3 shadow-glow-cyan-btn transition-all hover:bg-cyan-400 hover:shadow-glow-cyan-strong">Envoyer</button>
     </form>

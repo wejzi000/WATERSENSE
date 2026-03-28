@@ -93,7 +93,7 @@ export function Contact() {
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <label className="label" htmlFor="name">Nom complet *</label>
-              <input className="input" id="name" name="name" required placeholder="Jean Dupont" />
+              <input className="input" id="name" name="name" required placeholder="Patrick Leleu" />
             </div>
             <div>
               <label className="label" htmlFor="email">Email *</label>
