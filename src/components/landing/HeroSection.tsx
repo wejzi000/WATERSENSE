@@ -72,63 +72,21 @@ export function HeroSection() {
             {/* CTA group */}
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
-                href="https://tonlien.com" // Remplace par l'URL de ta démo
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#contact"
                 className="inline-flex items-center gap-2 rounded-btn bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
               >
                 Demander une démo
                 <ArrowRight size={16} />
               </a>
               <a
-                href="mailto:contact@tonsite.com" // Remplace par ton adresse mail
+                href="#contact"
                 className="inline-flex items-center gap-2 rounded-btn border border-border px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-primary/5"
               >
                 Contacter les ventes
               </a>
             </div>
 
-            {/* Formulaire de contact */}
-            <form
-              className="mt-8 max-w-md"
-              action="mailto:contact@tonsite.com" // Remplace par ton adresse mail
-              method="POST"
-              encType="text/plain"
-            >
-              <div className="mb-4">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Votre nom"
-                  required
-                  className="w-full rounded border border-border px-4 py-2"
-                />
-              </div>
-              <div className="mb-4">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Votre email"
-                  required
-                  className="w-full rounded border border-border px-4 py-2"
-                />
-              </div>
-              <div className="mb-4">
-                <textarea
-                  name="message"
-                  placeholder="Votre message"
-                  required
-                  className="w-full rounded border border-border px-4 py-2"
-                  rows={4}
-                />
-              </div>
-              <button
-                type="submit"
-                className="rounded-btn bg-accent px-6 py-3 text-sm font-semibold text-white hover:bg-accent-dark"
-              >
-                Envoyer
-              </button>
-            </form>
+            {/* Le formulaire de contact doit être placé dans la section Contact plus bas dans la page, pas ici. */}
 
             {/* Trust badges */}
             <ul className="mt-10 flex flex-wrap gap-6">
