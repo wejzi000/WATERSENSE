@@ -13,16 +13,6 @@ import { ContactForm } from '../ContactForm'
           >
             <ContactForm />
           </motion.div>
-                  <Send size={16} />
-                </button>
-
-                <p className="text-center text-xs text-ink/40 font-sans">
-                  Vos données sont protégées. Aucun spam.
-                </p>
-              </form>
-            )}
-          </motion.div>
-
         </div>
       </div>
     </section>
