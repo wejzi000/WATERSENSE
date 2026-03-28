@@ -1,24 +1,27 @@
 import React, { useRef } from 'react';
-import emailjs from '@emailjs/browser';
 
 export const ContactForm = () => {
   const form = useRef<HTMLFormElement>(null);
 
-  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+  const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!form.current) return;
-    emailjs.sendForm(
-      'service_0ooutfj',
-      'template_r5v79er',
-      form.current,
-      'rA8SsJXSHa7bI30xf'
-    )
-    .then((result) => {
-        alert('Message envoyé !');
-        form.current?.reset();
-    }, (error) => {
-        alert('Erreur lors de l\'envoi : ' + error.text);
+
+    const formData = new FormData(form.current);
+    const data = Object.fromEntries(formData.entries());
+
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
     });
+
+    if (response.ok) {
+      alert('Message envoyé !');
+      form.current.reset();
+    } else {
+      alert("Erreur lors de l'envoi du message.");
+    }
   };
 
   return (
