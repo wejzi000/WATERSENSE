@@ -71,7 +71,7 @@ export function PricingSection() {
           <h2 className="font-display text-4xl font-extrabold bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent mt-2 tracking-tight">
             Un plan adapté à chaque besoin
           </h2>
-          <p className="mt-4 text-base text-gray-300 max-w-xl mx-auto leading-relaxed font-sans">
+          <p className="mt-4 text-base text-gray-100 max-w-xl mx-auto leading-relaxed font-sans">
             Pas de frais cachés. Déploiement inclus. Résiliable à tout moment.
           </p>
           <p className="mt-2 inline-block rounded-full bg-cyan-400/10 px-4 py-1.5 text-sm font-semibold text-cyan-400">
@@ -99,7 +99,7 @@ export function PricingSection() {
               <h3 className="font-display text-xl font-bold text-cyan-400">
                 {plan.name}
               </h3>
-              <p className="mt-2 text-sm text-gray-300 font-sans">
+              <p className="mt-2 text-sm text-gray-100 font-sans">
                 {plan.description}
               </p>
 
@@ -118,7 +118,7 @@ export function PricingSection() {
 
               <ul className="flex-1 space-y-3 mb-8">
                 {plan.features.map((feat) => (
-                  <li key={feat} className="flex items-start gap-2 text-sm text-gray-300 font-sans">
+                  <li key={feat} className="flex items-start gap-2 text-sm text-gray-100 font-sans">
                     <Check size={16} className="mt-0.5 shrink-0 text-accent" />
                     {feat}
                   </li>

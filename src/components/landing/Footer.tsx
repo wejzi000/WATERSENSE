@@ -9,13 +9,13 @@ export function Footer() {
           <span className="font-display text-2xl font-bold bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent tracking-tight">
             WaterSense
           </span>
-          <p className="font-sans text-sm text-gray-400 mt-2">
+          <p className="font-sans text-sm text-gray-100 mt-2">
             © {new Date().getFullYear()} WaterSense. Tous droits réservés.
           </p>
         </div>
 
         {/* Partie Droite : Liens utiles */}
-        <div className="flex flex-wrap justify-center gap-6 text-sm font-medium font-sans text-gray-400">
+        <div className="flex flex-wrap justify-center gap-6 text-sm font-medium font-sans text-gray-100">
           <a href="#" className="hover:text-cyan-400 transition-colors duration-200">
             Mentions Légales
           </a>
