@@ -6,7 +6,7 @@ export function ContactForm() {
       method="POST"
       className="max-w-md mx-auto"
       autoComplete="off"
-      data-success-message="Votre message a bien été envoyé ! Merci pour votre prise de contact. Nous vous répondrons rapidement."
+      data-success-message="Merci, votre message a bien été envoyé. Nous vous répondrons sous 24h."
     >
       <input type="hidden" name="access_key" value="93d1ad3f-a137-4590-aafc-7ddb9b03bdad" />
       <input type="text" name="name" placeholder="Jean Dupont" required className="w-full rounded border border-border px-4 py-2 mb-4" />
