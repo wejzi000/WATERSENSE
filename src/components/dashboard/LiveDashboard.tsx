@@ -1,29 +1,167 @@
+
+import { useState, useRef } from 'react';
+import {
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
+} from 'recharts';
 import { motion } from 'framer-motion';
 import { Download, Wifi } from 'lucide-react';
+// Pour la génération PDF (sera utilisé dans la prochaine étape)
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 export function LiveDashboard() {
-  // Données simulées (issues du rapport)
-  const confidence = 85;
-  const humidity = [72, 64, 58]; // 30cm, 60cm, 90cm
-  const waterSaving = 28.4;
-  const roi = 140;
-  const prescription = 12; // mm
-  const euroGain = 1840;
+  // Liste des cultures et leurs données simulées
+  const cultures = [
+    {
+      key: 'mais',
+      label: 'Maïs',
+      subtitle: 'Beauce Sud - Maïs Grain',
+      data: {
+        confidence: 85,
+        humidity: [72, 64, 58],
+        waterSaving: 28.4,
+        roi: 140,
+        prescription: 12,
+        euroGain: 1840,
+      },
+    },
+    {
+      key: 'ble',
+      label: 'Blé',
+      subtitle: 'Beauce Sud - Blé Tendre',
+      data: {
+        confidence: 80,
+        humidity: [68, 60, 55],
+        waterSaving: 22.1,
+        roi: 120,
+        prescription: 9,
+        euroGain: 1200,
+      },
+    },
+    {
+      key: 'orge',
+      label: 'Orge',
+      subtitle: 'Beauce Sud - Orge',
+      data: {
+        confidence: 78,
+        humidity: [70, 62, 54],
+        waterSaving: 19.7,
+        roi: 110,
+        prescription: 8,
+        euroGain: 950,
+      },
+    },
+    {
+      key: 'tournesol',
+      label: 'Tournesol',
+      subtitle: 'Beauce Sud - Tournesol',
+      data: {
+        confidence: 82,
+        humidity: [65, 58, 50],
+        waterSaving: 25.3,
+        roi: 130,
+        prescription: 10,
+        euroGain: 1350,
+      },
+    },
+    {
+      key: 'colza',
+      label: 'Colza',
+      subtitle: 'Beauce Sud - Colza',
+      data: {
+        confidence: 76,
+        humidity: [60, 55, 48],
+        waterSaving: 17.5,
+        roi: 105,
+        prescription: 7,
+        euroGain: 800,
+      },
+    },
+  ];
+
+  const [selectedCulture, setSelectedCulture] = useState(cultures[0].key);
+  const dashboardRef = useRef<HTMLDivElement>(null);
+
+  const culture = cultures.find((c) => c.key === selectedCulture)!;
+
+  const { confidence, humidity, waterSaving, roi, prescription, euroGain } = culture.data;
+
+  // Données simulées pour le graphique d'humidité (évolution sur 7 jours)
+  const humidityHistory = [
+    { day: 'J-6', value: humidity[0] - 6 },
+    { day: 'J-5', value: humidity[0] - 4 },
+    { day: 'J-4', value: humidity[0] - 2 },
+    { day: 'J-3', value: humidity[0] - 1 },
+    { day: 'J-2', value: humidity[0] },
+    { day: 'J-1', value: humidity[0] + 2 },
+    { day: 'Aujourd\'hui', value: humidity[0] },
+  ];
+        {/* Graphique d'évolution de l'humidité (exemple) */}
+        <div className="bg-gray-900/60 border border-cyan-400/10 rounded-xl px-6 py-5 mt-2">
+          <h4 className="text-cyan-300 font-semibold mb-2 text-sm">Évolution de l'humidité (30cm)</h4>
+          <div style={{ width: '100%', height: 180 }}>
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={humidityHistory} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#164e63" />
+                <XAxis dataKey="day" stroke="#67e8f9" fontSize={12} />
+                <YAxis stroke="#67e8f9" fontSize={12} domain={[0, 100]} tickFormatter={(v) => v + '%'} />
+                <Tooltip contentStyle={{ background: '#0f172a', border: '1px solid #06b6d4', color: '#fff' }} formatter={(v) => v + '%'} />
+                <Line type="monotone" dataKey="value" stroke="#06b6d4" strokeWidth={3} dot={{ r: 4, fill: '#06b6d4' }} activeDot={{ r: 6 }} />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+  // Handler pour la génération PDF
+  const handleGeneratePDF = async () => {
+    if (!dashboardRef.current) return;
+    const element = dashboardRef.current;
+    // Scroll to top to avoid cut
+    window.scrollTo(0, 0);
+    // Capture l'élément en image
+    const canvas = await html2canvas(element, { backgroundColor: null, scale: 2 });
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF({ orientation: 'landscape', unit: 'pt', format: 'a4' });
+    // Calcul pour centrer l'image dans le PDF
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+    const imgWidth = canvas.width;
+    const imgHeight = canvas.height;
+    const ratio = Math.min(pageWidth / imgWidth, pageHeight / imgHeight);
+    const x = (pageWidth - imgWidth * ratio) / 2;
+    const y = (pageHeight - imgHeight * ratio) / 2;
+    pdf.addImage(imgData, 'PNG', x, y, imgWidth * ratio, imgHeight * ratio);
+    pdf.save(`Dashboard_${culture.label}.pdf`);
+  };
 
   return (
     <section className="relative max-w-5xl mx-auto mt-24 mb-20 px-6">
       <motion.div
+        ref={dashboardRef}
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.7 }}
         className="bg-gray-950/60 border border-cyan-400/20 backdrop-blur-lg rounded-2xl shadow-glow-cyan p-10 flex flex-col gap-8"
       >
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-2">
+        {/* Sélecteur de culture */}
+        <div className="flex flex-wrap gap-3 mb-2">
+          {cultures.map((c) => (
+            <button
+              key={c.key}
+              onClick={() => setSelectedCulture(c.key)}
+              className={`px-4 py-1.5 rounded-full border text-sm font-semibold transition-all duration-200 focus:outline-none ${selectedCulture === c.key ? 'bg-cyan-400/20 border-cyan-400 text-cyan-300 shadow' : 'bg-gray-900/40 border-cyan-400/10 text-gray-300 hover:bg-cyan-400/10'}`}
+            >
+              {c.label}
+            <button
+              onClick={handleGeneratePDF}
+              className="mt-8 w-full md:w-auto flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-cyan-400 text-gray-900 font-bold text-lg shadow-glow-cyan hover:bg-cyan-300 transition-all duration-200 focus:outline-none"
+            >
+              <Download className="w-6 h-6" /> Générer Bilan de Saison (PDF)
+            </button>
           <div>
             <h3 className="font-display text-2xl md:text-3xl font-bold text-white tracking-tight mb-1">
-              Dashboard Temps Réel — <span className="text-cyan-400">Beauce Sud - Maïs Grain</span>
+              Dashboard Temps Réel — <span className="text-cyan-400">{culture.subtitle}</span>
             </h3>
             <div className="flex items-center gap-2 text-cyan-400 text-sm font-medium">
               <svg width="20" height="20" fill="none" viewBox="0 0 24 24" className="inline-block"><circle cx="12" cy="12" r="10" stroke="#06b6d4" strokeWidth="2"/><path d="M8 12l2 2 4-4" stroke="#06b6d4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
