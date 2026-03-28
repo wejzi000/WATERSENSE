@@ -17,8 +17,8 @@ export default function Home() {
       <ROICalculator />
       <FeaturesSection />
       <PricingSection />
-      <ContactSection />
       <CtaSection />
+      <ContactSection />
       <Footer />
     </>
   )
