@@ -55,7 +55,7 @@ const plans = [
 
 export function PricingSection() {
   return (
-    <section id="tarifs" className="bg-surface py-20 lg:py-28">
+    <section id="tarifs" className="py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-6">
         {/* Titre */}
         <motion.div
@@ -65,16 +65,16 @@ export function PricingSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-sm font-semibold text-accent font-sans uppercase tracking-wide">
+          <p className="text-sm font-semibold text-cyan-400 font-sans uppercase tracking-wide">
             Tarifs
           </p>
-          <h2 className="font-display text-4xl font-extrabold text-primary mt-2 tracking-tight">
+          <h2 className="font-display text-4xl font-extrabold bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent mt-2 tracking-tight">
             Un plan adapté à chaque besoin
           </h2>
-          <p className="mt-4 text-base text-ink/60 max-w-xl mx-auto leading-relaxed font-sans">
+          <p className="mt-4 text-base text-gray-300 max-w-xl mx-auto leading-relaxed font-sans">
             Pas de frais cachés. Déploiement inclus. Résiliable à tout moment.
           </p>
-          <p className="mt-2 inline-block rounded-full bg-accent/10 px-4 py-1.5 text-sm font-semibold text-accent-dark">
+          <p className="mt-2 inline-block rounded-full bg-cyan-400/10 px-4 py-1.5 text-sm font-semibold text-cyan-400">
             Offre lancement : -30 % la première année
           </p>
         </motion.div>
@@ -88,11 +88,7 @@ export function PricingSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className={`relative flex flex-col rounded-xl border p-8 ${
-                plan.highlighted
-                  ? 'border-primary bg-white shadow-lg scale-[1.03]'
-                  : 'border-gray-200 bg-white shadow-sm'
-              }`}
+              className={`relative flex flex-col rounded-2xl border p-8 bg-gray-950/40 backdrop-blur-lg border-cyan-900/50 shadow-glow-cyan hover:border-cyan-500/80 hover:shadow-glow-cyan-strong transition-all duration-300 scale-[1.03] ${plan.highlighted ? 'ring-2 ring-cyan-400/60' : ''}`}
             >
               {plan.highlighted && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-semibold text-white">
@@ -100,10 +96,10 @@ export function PricingSection() {
                 </span>
               )}
 
-              <h3 className="font-display text-xl font-bold text-ink">
+              <h3 className="font-display text-xl font-bold text-cyan-400">
                 {plan.name}
               </h3>
-              <p className="mt-2 text-sm text-ink/60 font-sans">
+              <p className="mt-2 text-sm text-gray-300 font-sans">
                 {plan.description}
               </p>
 
@@ -122,7 +118,7 @@ export function PricingSection() {
 
               <ul className="flex-1 space-y-3 mb-8">
                 {plan.features.map((feat) => (
-                  <li key={feat} className="flex items-start gap-2 text-sm text-ink/70 font-sans">
+                  <li key={feat} className="flex items-start gap-2 text-sm text-gray-300 font-sans">
                     <Check size={16} className="mt-0.5 shrink-0 text-accent" />
                     {feat}
                   </li>
@@ -131,11 +127,7 @@ export function PricingSection() {
 
               <a
                 href="#contact"
-                className={`block w-full rounded-lg py-3 text-center text-sm font-semibold transition-all duration-300 ${
-                  plan.highlighted
-                    ? 'bg-primary text-white hover:bg-primary-dark'
-                    : 'border border-border text-ink hover:bg-primary/5'
-                }`}
+                className="block w-full rounded-full py-3 text-center text-sm font-semibold bg-cyan-500 text-gray-950 shadow-glow-cyan-btn transition-all hover:bg-cyan-400 hover:shadow-glow-cyan-strong"
               >
                 {plan.cta}
               </a>

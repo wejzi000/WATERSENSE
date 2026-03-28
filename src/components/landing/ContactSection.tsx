@@ -5,8 +5,8 @@ import { ContactForm } from '../ContactForm'
 
 export function ContactSection() {
   return (
-    <section id="contact" className="pt-40 pb-20 bg-white">
-      <div className="flex flex-col items-center justify-center">
+    <section id="contact" className="pt-40 pb-20">
+      <div className="flex flex-col items-center justify-center bg-gray-950/40 backdrop-blur-lg border border-cyan-900/50 rounded-2xl shadow-glow-cyan p-8 w-full max-w-2xl mx-auto hover:border-cyan-500/80 hover:shadow-glow-cyan-strong transition-all duration-300">
         <h2 className="text-4xl font-extrabold mb-4 text-primary">Prêt à passer à l’action&nbsp;?</h2>
         <p className="mb-8 text-lg text-gray-700 text-center max-w-2xl">Remplissez le formulaire ci-dessous pour demander une démo, un devis ou poser toutes vos questions à notre équipe. Nous vous répondrons sous 24h.</p>
         <motion.div

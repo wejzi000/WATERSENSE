@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter, Outfit } from 'next/font/google'
+
 import './globals.css'
+import { BackgroundBeams } from '../components/ui/BackgroundBeams'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -40,7 +42,14 @@ export default function RootLayout({
         <link rel="icon" href="/logo.svg" />
         <link rel="apple-touch-icon" href="/logo.svg" />
       </head>
-      <body className="font-sans bg-surface text-ink antialiased">
+      <body
+        className="font-sans antialiased bg-[#030712] text-gray-100"
+        style={{
+          backgroundImage:
+            'radial-gradient(at 10% 10%, #0c1a3a 0px, transparent 50%), radial-gradient(at 90% 90%, #071228 0px, transparent 50%)',
+        }}
+      >
+        <BackgroundBeams />
         {children}
         <script dangerouslySetInnerHTML={{
           __html: `

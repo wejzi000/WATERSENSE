@@ -32,8 +32,14 @@ const config: Config = {
         display: ['var(--font-outfit)', 'Outfit', 'system-ui', 'sans-serif'],
         sans:    ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
       },
+      animation: {
+        'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
       boxShadow: {
         card: '0 1px 3px 0 rgba(15,76,92,0.06), 0 1px 2px -1px rgba(15,76,92,0.04)',
+        'glow-cyan': '0 0 30px -5px rgba(6,182,212,0.3)',
+        'glow-cyan-strong': '0 0 50px -5px rgba(6,182,212,0.5)',
+        'glow-cyan-btn': '0 0 20px 0px rgba(6,182,212,0.6)',
       },
       borderRadius: {
         btn: '0.375rem', // rounded-md — pas de rounded-full

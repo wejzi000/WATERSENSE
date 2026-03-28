@@ -26,7 +26,7 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section id="solution" className="bg-[#F3F4F6] py-20 mt-16 px-6">
+    <section id="solution" className="py-20 mt-16 px-6">
       <div className="mx-auto max-w-6xl">
 
         {/* Titre de section */}
@@ -37,10 +37,10 @@ export function FeaturesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-sm font-semibold text-accent font-sans uppercase tracking-wide">
+          <p className="text-sm font-semibold text-cyan-400 font-sans uppercase tracking-wide">
             L'efficacité prouvée
           </p>
-          <h2 className="font-display text-4xl font-extrabold text-primary mt-2 tracking-tight">
+          <h2 className="font-display text-4xl font-extrabold bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent mt-2 tracking-tight">
             Comment WaterSense réduit votre facture d'eau
           </h2>
         </motion.div>
@@ -54,7 +54,7 @@ export function FeaturesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300"
+              className="bg-gray-950/40 backdrop-blur-lg border border-cyan-900/50 rounded-2xl shadow-glow-cyan p-8 hover:border-cyan-500/80 hover:shadow-glow-cyan-strong transition-all duration-300"
             >
               {/* Conteneur de l'icône */}
               <div className="bg-primary/5 w-16 h-16 rounded-full flex items-center justify-center mb-6 border border-primary/10">
@@ -62,10 +62,10 @@ export function FeaturesSection() {
               </div>
 
               {/* Texte */}
-              <h3 className="font-display text-2xl font-semibold text-ink mb-3">
+              <h3 className="font-display text-2xl font-semibold text-cyan-400 mb-3">
                 {feat.title}
               </h3>
-              <p className="font-sans text-base text-ink/60 leading-relaxed">
+              <p className="font-sans text-base text-gray-300 leading-relaxed">
                 {feat.description}
               </p>
             </motion.div>

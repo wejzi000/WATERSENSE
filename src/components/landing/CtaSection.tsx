@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react'
 
 export function CtaSection() {
   return (
-    <section className="py-24 relative overflow-hidden bg-primary">
+    <section className="py-24 relative overflow-hidden">
       {/* Effets de fond décoratifs */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute -top-[20%] -right-[10%] w-[500px] h-[500px] rounded-full bg-accent/20 blur-3xl" />
@@ -20,13 +20,13 @@ export function CtaSection() {
         className="max-w-4xl mx-auto px-6 text-center relative z-10"
       >
         {/* Titre accrocheur */}
-        <h2 className="font-display text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight leading-tight">
+        <h2 className="font-display text-4xl md:text-5xl font-extrabold bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent mb-6 tracking-tight leading-tight">
           Prêt à transformer vos pertes en{' '}
-          <span className="text-accent">économies nettes ?</span>
+          <span className="text-cyan-400">économies nettes ?</span>
         </h2>
 
         {/* Sous-titre rassurant */}
-        <p className="font-sans text-lg md:text-xl text-cyan-100 mb-10 max-w-2xl mx-auto leading-relaxed">
+        <p className="font-sans text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
           Rejoignez nos premiers exploitants pilotes et réduisez votre budget
           irrigation de 20-30&nbsp;%. Offre early adopter : -30&nbsp;% la
           première année.
@@ -37,7 +37,7 @@ export function CtaSection() {
           {/* Bouton Primaire */}
           <a
             href="#contact"
-            className="w-full sm:w-auto px-8 py-4 bg-white text-primary font-semibold font-sans rounded-lg shadow-[0_8px_30px_rgb(255,255,255,0.1)] hover:shadow-[0_8px_30px_rgb(255,255,255,0.2)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 group"
+            className="w-full sm:w-auto px-8 py-4 bg-cyan-500 text-gray-950 font-semibold rounded-full shadow-glow-cyan-btn transition-all hover:bg-cyan-400 hover:shadow-glow-cyan-strong flex items-center justify-center gap-2 group"
           >
             Demander une démo
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -46,7 +46,7 @@ export function CtaSection() {
           {/* Bouton Secondaire */}
           <a
             href="#contact"
-            className="w-full sm:w-auto px-8 py-4 bg-transparent text-white font-semibold font-sans rounded-lg border border-white/30 hover:bg-white/10 transition-all duration-300 flex items-center justify-center"
+            className="w-full sm:w-auto px-8 py-4 bg-gray-950/40 text-cyan-400 font-semibold rounded-full border border-cyan-900/50 hover:border-cyan-500/80 hover:bg-cyan-400/10 hover:text-cyan-300 shadow-glow-cyan-btn transition-all flex items-center justify-center"
           >
             Contacter les ventes
           </a>
