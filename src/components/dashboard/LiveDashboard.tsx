@@ -1,4 +1,9 @@
-  // Génère des alertes dynamiques selon les seuils critiques
+  // Les fonctions getAlerts et getRecommendations doivent être définies APRÈS la déclaration de culture et des variables destructurées
+  // (sinon elles n'ont pas accès à humidity, confidence, etc.)
+
+  // ...existing code...
+
+  // Place ici les fonctions getAlerts et getRecommendations
   function getAlerts() {
     const alerts = [];
     if (humidity[0] < 60) alerts.push("⚠️ Humidité très basse à 30cm : risque de stress hydrique !");
@@ -7,6 +12,70 @@
     if (confidence < 75) alerts.push("⚠️ Indice de confiance faible : vérifier les capteurs ou refaire une mesure terrain.");
     if (roi < 100) alerts.push("⚠️ ROI matériel sous 100% : revoir la stratégie d'irrigation ou d'investissement.");
     return alerts;
+  }
+
+  function getRecommendations() {
+    // Recommandations personnalisées par culture et seuils
+    if (culture.label === 'Maïs') {
+      if (humidity[0] < 70) return [
+        "⚠️ Humidité basse : irriguer 10mm sous 24h.",
+        "Vérifier la sonde 90cm (sous 60%) pour éviter le stress hydrique.",
+        "Surveiller la météo pour ajuster l'irrigation."
+      ];
+      if (confidence < 80) return [
+        "Indice de confiance faible : valider les données capteurs.",
+        "Planifier une visite terrain."
+      ];
+      return [
+        "Situation optimale, maintenir le suivi.",
+        "Aucune action urgente requise."
+      ];
+    }
+    if (culture.label === 'Blé') {
+      if (humidity[0] < 65) return [
+        "Prévoir une irrigation légère (6mm) pour éviter le stress.",
+        "Contrôler la fertilisation azotée (stade épi)."
+      ];
+      if (waterSaving > 20) return [
+        "Bonne économie d'eau, continuer l'optimisation.",
+        "Surveiller la météo pour ajuster les apports."
+      ];
+      return [
+        "Optimiser la gestion des apports.",
+        "Aucune action urgente requise."
+      ];
+    }
+    if (culture.label === 'Orge') {
+      if (humidity[0] < 60) return [
+        "⚠️ Humidité faible : irriguer rapidement.",
+        "Surveiller la montée en épi."
+      ];
+      return [
+        "Adapter l'irrigation selon météo.",
+        "Contrôler la pression maladies."
+      ];
+    }
+    if (culture.label === 'Tournesol') {
+      if (humidity[0] < 60) return [
+        "Réserve utile basse : prévoir irrigation si possible.",
+        "Surveiller les stades de floraison."
+      ];
+      return [
+        "Situation stable, continuer le suivi.",
+        "Aucune action urgente requise."
+      ];
+    }
+    if (culture.label === 'Colza') {
+      if (humidity[0] < 55) return [
+        "Contrôler la pression ravageurs (altises, charançons).",
+        "Surveiller l'humidité du sol et ajuster si besoin."
+      ];
+      return [
+        "Réaliser un diagnostic visuel des parcelles.",
+        "Aucune action urgente requise."
+      ];
+    }
+    return ["Aucune recommandation spécifique"];
   }
 
 import { useState, useRef } from 'react';
