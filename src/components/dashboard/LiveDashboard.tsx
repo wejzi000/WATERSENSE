@@ -1,86 +1,8 @@
-  // Les fonctions getAlerts et getRecommendations doivent être définies APRÈS la déclaration de culture et des variables destructurées
-  // (sinon elles n'ont pas accès à humidity, confidence, etc.)
-
   // ...existing code...
-
-  // Place ici les fonctions getAlerts et getRecommendations
-  function getAlerts() {
-    const alerts = [];
-    if (humidity[0] < 60) alerts.push("⚠️ Humidité très basse à 30cm : risque de stress hydrique !");
-    if (humidity[1] < 50) alerts.push("⚠️ Humidité insuffisante à 60cm : surveiller l'enracinement.");
-    if (humidity[2] < 45) alerts.push("⚠️ Humidité critique à 90cm : risque de perte de rendement.");
-    if (confidence < 75) alerts.push("⚠️ Indice de confiance faible : vérifier les capteurs ou refaire une mesure terrain.");
-    if (roi < 100) alerts.push("⚠️ ROI matériel sous 100% : revoir la stratégie d'irrigation ou d'investissement.");
-    return alerts;
-  }
-
-  function getRecommendations() {
-    // Recommandations personnalisées par culture et seuils
-    if (culture.label === 'Maïs') {
-      if (humidity[0] < 70) return [
-        "⚠️ Humidité basse : irriguer 10mm sous 24h.",
-        "Vérifier la sonde 90cm (sous 60%) pour éviter le stress hydrique.",
-        "Surveiller la météo pour ajuster l'irrigation."
-      ];
-      if (confidence < 80) return [
-        "Indice de confiance faible : valider les données capteurs.",
-        "Planifier une visite terrain."
-      ];
-      return [
-        "Situation optimale, maintenir le suivi.",
-        "Aucune action urgente requise."
-      ];
-    }
-    if (culture.label === 'Blé') {
-      if (humidity[0] < 65) return [
-        "Prévoir une irrigation légère (6mm) pour éviter le stress.",
-        "Contrôler la fertilisation azotée (stade épi)."
-      ];
-      if (waterSaving > 20) return [
-        "Bonne économie d'eau, continuer l'optimisation.",
-        "Surveiller la météo pour ajuster les apports."
-      ];
-      return [
-        "Optimiser la gestion des apports.",
-        "Aucune action urgente requise."
-      ];
-    }
-    if (culture.label === 'Orge') {
-      if (humidity[0] < 60) return [
-        "⚠️ Humidité faible : irriguer rapidement.",
-        "Surveiller la montée en épi."
-      ];
-      return [
-        "Adapter l'irrigation selon météo.",
-        "Contrôler la pression maladies."
-      ];
-    }
-    if (culture.label === 'Tournesol') {
-      if (humidity[0] < 60) return [
-        "Réserve utile basse : prévoir irrigation si possible.",
-        "Surveiller les stades de floraison."
-      ];
-      return [
-        "Situation stable, continuer le suivi.",
-        "Aucune action urgente requise."
-      ];
-    }
-    if (culture.label === 'Colza') {
-      if (humidity[0] < 55) return [
-        "Contrôler la pression ravageurs (altises, charançons).",
-        "Surveiller l'humidité du sol et ajuster si besoin."
-      ];
-      return [
-        "Réaliser un diagnostic visuel des parcelles.",
-        "Aucune action urgente requise."
-      ];
-    }
-    return ["Aucune recommandation spécifique"];
-  }
 
 import { useState, useRef } from 'react';
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts';
 import { motion } from 'framer-motion';
 import { Download, Wifi } from 'lucide-react';
@@ -162,9 +84,19 @@ export function LiveDashboard() {
   const dashboardRef = useRef<HTMLDivElement>(null);
   const pdfBtnRef = useRef<HTMLButtonElement>(null);
 
+  // Alertes dynamiques par culture et données
+  function getAlerts() {
+    const alerts = [];
+    if (humidity[0] < 60) alerts.push("⚠️ Humidité très basse à 30cm : risque de stress hydrique !");
+    if (humidity[1] < 50) alerts.push("⚠️ Humidité insuffisante à 60cm : surveiller l'enracinement.");
+    if (humidity[2] < 45) alerts.push("⚠️ Humidité critique à 90cm : risque de perte de rendement.");
+    if (confidence < 75) alerts.push("⚠️ Indice de confiance faible : vérifier les capteurs ou refaire une mesure terrain.");
+    if (roi < 100) alerts.push("⚠️ ROI matériel sous 100% : revoir la stratégie d'irrigation ou d'investissement.");
+    return alerts;
+  }
+
   // Recommandations dynamiques par culture et données
   function getRecommendations() {
-    // Recommandations personnalisées par culture et seuils
     if (culture.label === 'Maïs') {
       if (humidity[0] < 70) return [
         "⚠️ Humidité basse : irriguer 10mm sous 24h.",
@@ -232,37 +164,35 @@ export function LiveDashboard() {
   const { confidence, humidity, waterSaving, roi, prescription, euroGain } = culture.data;
 
   // Données simulées pour le graphique d'humidité (évolution sur 7 jours)
+  // Génère un historique pour chaque profondeur avec des couleurs différentes
   const humidityHistory = [
-    { day: 'J-6', value: humidity[0] - 6 },
-    { day: 'J-5', value: humidity[0] - 4 },
-    { day: 'J-4', value: humidity[0] - 2 },
-    { day: 'J-3', value: humidity[0] - 1 },
-    { day: 'J-2', value: humidity[0] },
-    { day: 'J-1', value: humidity[0] + 2 },
-    { day: "Aujourd'hui", value: humidity[0] },
+    { day: 'J-6', h30: humidity[0] - 6, h60: humidity[1] - 6, h90: humidity[2] - 6 },
+    { day: 'J-5', h30: humidity[0] - 4, h60: humidity[1] - 4, h90: humidity[2] - 4 },
+    { day: 'J-4', h30: humidity[0] - 2, h60: humidity[1] - 2, h90: humidity[2] - 2 },
+    { day: 'J-3', h30: humidity[0] - 1, h60: humidity[1] - 1, h90: humidity[2] - 1 },
+    { day: 'J-2', h30: humidity[0], h60: humidity[1], h90: humidity[2] },
+    { day: 'J-1', h30: humidity[0] + 2, h60: humidity[1] + 2, h90: humidity[2] + 2 },
+    { day: "Aujourd'hui", h30: humidity[0], h60: humidity[1], h90: humidity[2] },
   ];
 
   // Handler pour la génération PDF
   const handleGeneratePDF = async () => {
     if (!dashboardRef.current) return;
-    // Masquer le bouton PDF
-    if (pdfBtnRef.current) pdfBtnRef.current.style.display = 'none';
-    await new Promise((r) => setTimeout(r, 200));
+    // Créer un clone SANS le bouton PDF (plus fiable)
     const element = dashboardRef.current;
-    window.scrollTo(0, 0);
-    // Créer un conteneur temporaire pour un rendu PDF "propre"
     const clone = element.cloneNode(true);
     if (clone instanceof HTMLElement) {
+      // Supprime tous les boutons du clone
+      clone.querySelectorAll('button').forEach(btn => btn.remove());
       clone.style.background = '#fff';
       clone.style.padding = '24px';
       clone.style.borderRadius = '0';
       clone.style.boxShadow = 'none';
       clone.style.maxWidth = 'none';
       clone.style.margin = '0';
-      // Masquer le bouton PDF dans le clone si présent
-      const btn = clone.querySelector('button');
-      if (btn) btn.style.display = 'none';
       document.body.appendChild(clone);
+      window.scrollTo(0, 0);
+      await new Promise((r) => setTimeout(r, 200));
       const canvas = await html2canvas(clone, { backgroundColor: '#fff', scale: 3 });
       document.body.removeChild(clone);
       const imgData = canvas.toDataURL('image/png');
@@ -277,8 +207,6 @@ export function LiveDashboard() {
       pdf.addImage(imgData, 'PNG', x, y, imgWidth * ratio, imgHeight * ratio);
       pdf.save(`Dashboard_${culture.label}.pdf`);
     }
-    // Réafficher le bouton PDF
-    if (pdfBtnRef.current) pdfBtnRef.current.style.display = '';
   };
 
   return (
@@ -413,17 +341,20 @@ export function LiveDashboard() {
           </div>
         </div>
 
-        {/* Graphique d'évolution de l'humidité (exemple) */}
+        {/* Graphique d'évolution de l'humidité (3 profondeurs, couleurs) */}
         <div className="bg-gray-900/60 border border-cyan-400/10 rounded-xl px-6 py-5 mt-8">
-          <h4 className="text-cyan-300 font-semibold mb-2 text-sm">Évolution de l'humidité (30cm)</h4>
-          <div style={{ width: '100%', height: 200 }}>
+          <h4 className="text-cyan-300 font-semibold mb-2 text-sm">Évolution de l'humidité (30, 60, 90cm)</h4>
+          <div style={{ width: '100%', height: 220 }}>
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={humidityHistory} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#164e63" />
                 <XAxis dataKey="day" stroke="#38bdf8" fontSize={13} tick={{ fill: '#38bdf8', fontWeight: 600 }} />
                 <YAxis stroke="#38bdf8" fontSize={13} domain={[0, 100]} tickFormatter={(v) => v + '%'} tick={{ fill: '#38bdf8', fontWeight: 600 }} />
                 <Tooltip contentStyle={{ background: '#0f172a', border: '1px solid #06b6d4', color: '#fff' }} formatter={(v) => v + '%'} cursor={{ stroke: '#38bdf8', strokeWidth: 2, opacity: 0.2 }} />
-                <Line type="monotone" dataKey="value" stroke="#06b6d4" strokeWidth={4} dot={{ r: 6, fill: '#38bdf8', stroke: '#fff', strokeWidth: 2 }} activeDot={{ r: 8, fill: '#fbbf24', stroke: '#06b6d4', strokeWidth: 3 }} />
+                <Line type="monotone" dataKey="h30" name="30cm" stroke="#06b6d4" strokeWidth={4} dot={{ r: 6, fill: '#38bdf8', stroke: '#fff', strokeWidth: 2 }} activeDot={{ r: 8, fill: '#fbbf24', stroke: '#06b6d4', strokeWidth: 3 }} />
+                <Line type="monotone" dataKey="h60" name="60cm" stroke="#fbbf24" strokeWidth={4} dot={{ r: 6, fill: '#fde68a', stroke: '#fff', strokeWidth: 2 }} activeDot={{ r: 8, fill: '#06b6d4', stroke: '#fbbf24', strokeWidth: 3 }} />
+                <Line type="monotone" dataKey="h90" name="90cm" stroke="#10b981" strokeWidth={4} dot={{ r: 6, fill: '#6ee7b7', stroke: '#fff', strokeWidth: 2 }} activeDot={{ r: 8, fill: '#fbbf24', stroke: '#10b981', strokeWidth: 3 }} />
+                <Legend verticalAlign="top" height={36} iconType="circle" wrapperStyle={{ color: '#fff' }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -443,9 +374,9 @@ export function LiveDashboard() {
         )}
 
         {/* Section Actions/Recommandations */}
-        <div className="mt-8 bg-cyan-400/10 border border-cyan-400/20 rounded-xl p-6">
-          <h4 className="text-cyan-300 font-semibold mb-2 text-lg">Actions recommandées</h4>
-          <ul className="list-disc pl-6 text-cyan-100 text-base">
+        <div className="mt-8 bg-white border border-cyan-400/30 rounded-xl p-6">
+          <h4 className="text-cyan-700 font-bold mb-2 text-lg">Actions recommandées</h4>
+          <ul className="list-disc pl-6 text-cyan-900 text-base">
             {getRecommendations().map((rec, i) => (
               <li key={i}>{rec}</li>
             ))}
