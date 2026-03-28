@@ -1,22 +1,23 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 
-export function ContactForm() {
+export const ContactForm = () => {
   const form = useRef<HTMLFormElement>(null);
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!form.current) return;
     emailjs.sendForm(
-      'service_0ooutfj',      // Service ID EmailJS
-      'template_r5v79er',     // Template ID EmailJS
+      'service_0ooutfj',
+      'template_r5v79er',
       form.current,
-      'rA8SsJXSHa7bI30xf'     // Public Key EmailJS
+      'rA8SsJXSHa7bI30xf'
     )
-    .then(() => {
-      alert('Message envoyé !');
-      form.current?.reset();
+    .then((result) => {
+        alert('Message envoyé !');
+        form.current?.reset();
     }, (error) => {
-      alert('Erreur lors de l\'envoi : ' + error.text);
+        alert('Erreur lors de l\'envoi : ' + error.text);
     });
   };
 
@@ -28,4 +29,4 @@ export function ContactForm() {
       <button type="submit" className="rounded-btn bg-accent px-6 py-3 text-sm font-semibold text-white hover:bg-accent-dark">Envoyer</button>
     </form>
   );
-}
+};
