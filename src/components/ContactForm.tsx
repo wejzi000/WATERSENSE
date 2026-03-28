@@ -7,10 +7,10 @@ export function ContactForm() {
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs.sendForm(
-      'TON_SERVICE_ID',      // À remplacer par ton Service ID EmailJS
-      'TON_TEMPLATE_ID',     // À remplacer par ton Template ID EmailJS
+      'service_0ooutfj',      // Service ID EmailJS
+      'template_r5v79er',     // Template ID EmailJS
       form.current,
-      'TA_PUBLIC_KEY'        // À remplacer par ta Public Key EmailJS
+      'rA8SsJXSHa7bI30xf'     // Public Key EmailJS
     )
     .then(() => {
       alert('Message envoyé !');
