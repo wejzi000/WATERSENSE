@@ -16,6 +16,7 @@ const badges = [
 export function HeroSection() {
   const [selected, setSelected] = useState(0)
   // ...autres hooks éventuels
+  // Tous les useState doivent être ici, jamais dans une fonction/callback !
   // Définir PARCELLES ici pour l'utiliser dans le composant
   const PARCELLES = [
     {
